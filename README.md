@@ -12,11 +12,19 @@ Ongoing project about bearing fault diagnosis using multi-source transfer learni
 
 ### model
 Codes in directory "model" was revised (if code link was provided in paper) or reproduced from following papers.
+
 ACDANN: "Integrating Expert Knowledge with Domain Adaptation for Unsupervised Fault Diagnosis." Qin Wang et al.
+
 ADACL: "Adversarial domain adaptation with classifier alignment for cross-domain intelligent fault diagnosis of multiple source domains." Yongchao Zhang et al.
+
 MADN: "Deep Transfer Learning based Multisource Adaptation Fault Diagnosis Network for Industrial Processes." Zheng Chai et al.
+
 MFSAN: "Aligning Domain-Specific Distribution and Classifier for Cross-Domain Classification from Multiple Sources." Yongchun Zhu et al.
+
 MSSA: "A Multi-source Information Transfer Learning Method with Subdomain Adaptation for Cross-domain Fault Diagnosis." Jinghui Tian et al.
+
 MSTLN: "Multi-source transfer learning network to complement knowledge for intelligent diagnosis of machines with unseen faults." Bin Yang et al.
+
 WDCNN: "A New Deep Learning Model for Fault Diagnosis with Good Anti-Noise and Domain Adaptation Ability on Raw Vibration Signals." Wei Zhang et al.
+
 Reference for DAN, CDAN, DANN: [Transfer-Learning-Library](https://github.com/thuml/Transfer-Learning-Library)
