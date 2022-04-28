@@ -28,3 +28,5 @@ MSTLN: "Multi-source transfer learning network to complement knowledge for intel
 WDCNN: "A New Deep Learning Model for Fault Diagnosis with Good Anti-Noise and Domain Adaptation Ability on Raw Vibration Signals." Wei Zhang et al.
 
 Reference for DAN, CDAN, DANN: [Transfer-Learning-Library](https://github.com/thuml/Transfer-Learning-Library)
+
+(Codes for models especially for reproduced ones might be somewhat wrong. Welcome to point out mistakes to me.)
