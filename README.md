@@ -30,3 +30,6 @@ WDCNN: "A New Deep Learning Model for Fault Diagnosis with Good Anti-Noise and D
 Reference for DAN, CDAN, DANN: [Transfer-Learning-Library](https://github.com/thuml/Transfer-Learning-Library)
 
 (Codes for models especially for reproduced ones might be somewhat wrong. Welcome to point out mistakes to me.)
+
+# Explanation
+Detail usage instruction for our codes will be updated on this page as long as this project is completed. Before that only codes are accessible.
