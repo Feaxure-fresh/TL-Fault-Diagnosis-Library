@@ -11,7 +11,7 @@ Ongoing project about bearing fault diagnosis (Keep Updating).
 *  matplotlib (=3.5.0)
 
 ### model
-Codes in directory "model" was revised (if code link was provided in paper) or reproduced from following papers(not all included).
+Codes in directory "model" was revised(if code link was provided in paper) or reproduced from following papers(not all included):
 
 ACDANN: "Integrating Expert Knowledge with Domain Adaptation for Unsupervised Fault Diagnosis." Qin Wang et al.
 
