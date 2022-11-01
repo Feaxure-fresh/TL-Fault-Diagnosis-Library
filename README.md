@@ -1,5 +1,5 @@
 # BearingFaultDiagnosis
-Ongoing project about bearing fault diagnosis using multi-source transfer learning (Keep Updating).
+Ongoing project about bearing fault diagnosis (Keep Updating).
 
 # Installation
 ### Prerequisites
@@ -27,11 +27,11 @@ MSTLN: "Multi-source transfer learning network to complement knowledge for intel
 
 WDCNN: "A New Deep Learning Model for Fault Diagnosis with Good Anti-Noise and Domain Adaptation Ability on Raw Vibration Signals." Wei Zhang et al.
 
-Reference for DAN, CDAN, DANN: [Transfer-Learning-Library](https://github.com/thuml/Transfer-Learning-Library)
+Reference: [Transfer-Learning-Library](https://github.com/thuml/Transfer-Learning-Library)
 
 (Codes for models especially for reproduced ones might be somewhat wrong. Welcome to point out mistakes to me.)
 
-Reproduced codes for model MSTLN exist some problems and are not recommended to use.
+Codes in models_with_problem exist some problems and are not recommended to use.
 
 # Explanation
 Detail usage instruction for our codes will be updated on this page as long as this project is completed. Before that only codes are accessible.
