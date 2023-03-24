@@ -67,7 +67,9 @@ For example, organize CWRU and MFPT datasets as follows for one-to-one transfer.
 └── dataset
     ├── CWRU
     │   ├── inner_load2_48k
-    |   |    └── ***.mat 
+    |   |    ├── ***.mat
+    |   |    |   ***.mat
+    |   |    ...
     │   ├── normal_load123
     │   └── outer_load2_48k
     └── MFPT
