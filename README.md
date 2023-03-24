@@ -80,10 +80,10 @@ Note: Modification of the dataset loading code for custom training is highly rec
 ## Usage
 ### Within-dataset transfer
 ```shell
-python --model_name CNN --source_name CWRU_0 --target_name CWRU_1 --train_mode single_source --num_classes 9 --cuda_device 0
+python train.py --model_name CNN --source_name CWRU_0 --target_name CWRU_1 --train_mode single_source --num_classes 9 --cuda_device 0
 ``` 
 ```shell
-python --model_name MFSAN --source_name CWRU_0,CWRU_1 --target_name CWRU_2 --train_mode multi_source --num_classes 9 --cuda_device 0
+python train.py --model_name MFSAN --source_name CWRU_0,CWRU_1 --target_name CWRU_2 --train_mode multi_source --num_classes 9 --cuda_device 0
 ``` 
 ### Cross-dataset transfer
 ```shell
