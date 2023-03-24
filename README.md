@@ -15,7 +15,7 @@ This repository is an open-source library for cross-domain fault diagnosis, incl
 - **MCD** - Maximum classifier discrepancy for unsupervised domain adaptation. [[CVPR 2018]](http://openaccess.thecvf.com/content_cvpr_2018/papers/Saito_Maximum_Classifier_Discrepancy_CVPR_2018_paper.pdf) [[Code]](/models/MCD.py)
 - **MDD** - Bridging theory and algorithm for domain adaptation. [[ICML 2019]](http://proceedings.mlr.press/v97/zhang19i/zhang19i.pdf) [[Code]](/models/MDD.py)
 - **MFSAN** - Aligning domain-specific distribution and classifier for cross-domain classification from multiple sources. [[AAAI 2019]]([http://proceedings.mlr.press/v97/zhang19i/zhang19i.pdf](https://ojs.aaai.org/index.php/AAAI/article/view/4551/4429)) [[Code]](/models/MFSAN.py) 
-- **MSSA** - A multi-source information transfer learning method with subdomain adaptation for cross-domain fault diagnosis. [[Knowledge-Based Systems 2022]]([http://proceedings.mlr.press/v97/zhang19i/zhang19i.pdf](https://www.sciencedirect.com/science/article/pii/S0950705122001927/pdfft?isDTMRedir=true&download=true)) [[Code]](/models/MSSA.py)
+- **MSSA** - A multi-source information transfer learning method with subdomain adaptation for cross-domain fault diagnosis. [[Knowledge-Based Systems 2022]](https://reader.elsevier.com/reader/sd/pii/S0950705122001927?token=03BD384CA5D6E0E7E029B23C739C629913DE8F8BB37F6331F7D233FB6C57599BFFC86609EE63BE2F9FC43871D96A2F61&originRegion=us-east-1&originCreation=20230324021230) [[Code]](/models/MSSA.py)
 - **MixStyle** - Domain generalization with mixstyle. [[ICLR 2021]](https://arxiv.org/abs/2104.02008) [[Code]](/models/MixStyle.py)
 
 # Installation
