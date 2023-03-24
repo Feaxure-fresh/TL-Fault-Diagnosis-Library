@@ -18,11 +18,26 @@ This repository is an open-source library for cross-domain fault diagnosis, incl
 - **MSSA** - A multi-source information transfer learning method with subdomain adaptation for cross-domain fault diagnosis. [[Knowledge-Based Systems 2022]](https://reader.elsevier.com/reader/sd/pii/S0950705122001927?token=03BD384CA5D6E0E7E029B23C739C629913DE8F8BB37F6331F7D233FB6C57599BFFC86609EE63BE2F9FC43871D96A2F61&originRegion=us-east-1&originCreation=20230324021230) [[Code]](/models/MSSA.py)
 - **MixStyle** - Domain generalization with mixstyle. [[ICLR 2021]](https://arxiv.org/abs/2104.02008) [[Code]](/models/MixStyle.py)
 
-# Installation
+## Installation
 ### Prerequisites
 *  python3 (>=3.8)
 *  Pytorch (>=1.10)
-*  numpy (=1.21.2)
-*  pandas (=1.3.5)
-*  tqdm (=4.62.3)
-*  matplotlib (=3.5.0)
+*  numpy (>=1.21.2)
+*  pandas (>=1.5.3)
+*  tqdm (>=4.46.1)
+*  scipy (>=1.10)
+
+## Data Preparation
+#### Download datasets
+Firstly, download the data from a public bearing or gearbox fault dataset. Loading code for the following datasets is provided with reference to [[DL-based-Intelligent-Diagnosis-Benchmark]](https://github.com/ZhaoZhibin/DL-based-Intelligent-Diagnosis-Benchmark).
+- **[[CWRU]](https://engineering.case.edu/bearingdatacenter)** - Case Western Reserve University dataset.
+
+#### Within-dataset transfer
+
+
+#### Cross-dataset transfer
+
+## Usage
+
+
+
