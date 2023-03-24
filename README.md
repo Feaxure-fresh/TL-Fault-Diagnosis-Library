@@ -59,8 +59,29 @@ For example, divide CWRU dataset into 4 folders according to 4 motor speed. In e
 ```
 
 ### Cross-dataset transfer
+You can also try to implement transfer among different datasets. In this case, the categories of faults contained in each dataset must be the same.
+
+For example, organize CWRU and MFPT datasets as follows for one-to-one transfer.
+```
+.
+└── dataset
+    ├── CWRU
+    │   ├── inner_load2_48k
+    |   |    └── ***.mat 
+    │   ├── normal_load123
+    │   └── outer_load2_48k
+    └── MFPT
+        ├── inner_race_200_250_300
+        ├── normal_270
+        └── outer_race_270
+```
+Note: Modification of the dataset loading code for custom training is highly recommended.
 
 ## Usage
+### Within-dataset transfer
+```shell
+python --model_name CNN --source_name ['CWRU_0'] --target_name CWRU_1 --data_dir ./dataset --train_mode single_source --num_classes 9 --cuda_device 0 --save_dir ./ckpt
+``` 
 
 
 
