@@ -80,7 +80,7 @@ Note: Modification of the dataset loading code for custom training is highly rec
 ## Usage
 ### Within-dataset transfer
 ```shell
-python --model_name CNN --source_name ['CWRU_0'] --target_name CWRU_1 --data_dir ./dataset --train_mode single_source --num_classes 9 --cuda_device 0 --save_dir ./ckpt
+python --model_name CNN --source_name CWRU_0 --target_name CWRU_1 --train_mode single_source --num_classes 9 --cuda_device 0
 ``` 
 
 
