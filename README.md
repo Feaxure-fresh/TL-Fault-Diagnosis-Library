@@ -29,8 +29,8 @@ This repository is an open-source library for cross-domain fault diagnosis, incl
 
 ## Data Preparation
 ### Download datasets
-Firstly, download the data from a public bearing or gearbox fault dataset. Loading code for the following datasets is provided with reference to [[this]](https://github.com/ZhaoZhibin/DL-based-Intelligent-Diagnosis-Benchmark).
-- **[[CWRU]](https://engineering.case.edu/bearingdatacenter)** - Case Western Reserve University dataset.
+Download the data from a public bearing or gearbox fault dataset. Loading code for the following datasets is provided with reference to [[this]](https://github.com/ZhaoZhibin/DL-based-Intelligent-Diagnosis-Benchmark).
+- **[CWRU](https://engineering.case.edu/bearingdatacenter)** - Case Western Reserve University dataset.
 
 ### Within-dataset transfer
 
