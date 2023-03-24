@@ -95,4 +95,12 @@ python train.py --model_name CNN --source_name CWRU --target_name MFPT --train_m
 python train.py --model_name MFSAN --source_name CWRU,PU --target_name MFPT --train_mode multi_source --num_classes 3 --cuda_device 0
 ``` 
 
+## Contact
+If you have any problem with our code or have some suggestions, feel free to contact Jinyuan Zhang (feaxure@outlook.com) or describe it in Issues.
+
+## Citation
+If you use this toolbox or benchmark in your research, please cite this project. 
+```latex
+
+```
 
