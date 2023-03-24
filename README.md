@@ -81,8 +81,9 @@ Note: Modification of the dataset loading code for custom training is highly rec
 
 ## Usage
 Load trained weights.
+```shell
 python train.py --model_name CNN --load_path ./ckpt/CNN/model.pth --source_name CWRU_0 --target_name CWRU_1 --num_classes 9 --cuda_device 0
-
+```
 ### Within-dataset transfer
 One-to-one transfer.
 ```shell
