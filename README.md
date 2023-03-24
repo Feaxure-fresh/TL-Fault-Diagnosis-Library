@@ -101,6 +101,13 @@ If you have any problem with our code or have some suggestions, feel free to con
 ## Citation
 If you use this toolbox or benchmark in your research, please cite this project. 
 ```latex
-
+@misc{dafd,
+    author = {Jinyuan Zhang},
+    title = {Domain-Adaptation-Fault-Diagnosis},
+    year = {2022},
+    publisher = {GitHub},
+    journal = {GitHub repository},
+    howpublished = {\url{https://github.com/Feaxure-fresh/Domain-Adaptation-Fault-Diagnosis}},
+}
 ```
 
