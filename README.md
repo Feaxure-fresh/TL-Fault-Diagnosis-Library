@@ -37,7 +37,8 @@ Download the data from a public bearing or gearbox fault dataset. Loading code f
 - **[IMS](https://www.kaggle.com/datasets/vinayak123tyagi/bearing-dataset?resource=download)** - Intelligent Maintenance Systems dataset.
 
 ### Within-dataset transfer
-
+According to different operation conditions, divide a specific dataset into folders like "op_0", "op_1" and so on. In each "op_?" folder, use subfolders for different categories, which contain the fault data.
+For example, divide CWRU dataset into 4 folders according to 4 motor speed. In each folder, this operation condition can be classified into 9 fault classes, such as 7 mil IF, 14 mil IF, 7 mil OF and so on 
 
 ### Cross-dataset transfer
 
