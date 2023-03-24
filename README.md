@@ -31,6 +31,10 @@ This repository is an open-source library for cross-domain fault diagnosis, incl
 ### Download datasets
 Download the data from a public bearing or gearbox fault dataset. Loading code for the following datasets is provided with reference to [[this]](https://github.com/ZhaoZhibin/DL-based-Intelligent-Diagnosis-Benchmark).
 - **[CWRU](https://engineering.case.edu/bearingdatacenter)** - Case Western Reserve University dataset.
+- **[MFPT](https://www.mfpt.org/fault-data-sets)** - Machinery Failure Prevention Technology dataset.
+- **[PU](https://mb.uni-paderborn.de/kat/forschung/datacenter/bearing-datacenter)** - Paderborn University dataset.
+- **[XJTU](https://biaowang.tech/xjtu-sy-bearing-datasets)** - Xi’an Jiaotong University dataset.
+- **[IMS](https://www.kaggle.com/datasets/vinayak123tyagi/bearing-dataset?resource=download)** - Intelligent Maintenance Systems dataset.
 
 ### Within-dataset transfer
 
