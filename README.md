@@ -87,10 +87,10 @@ python --model_name MFSAN --source_name CWRU_0,CWRU_1 --target_name CWRU_2 --tra
 ``` 
 ### Cross-dataset transfer
 ```shell
-python --model_name CNN --source_name CWRU --target_name MFPT --train_mode single_source --num_classes 3 --cuda_device 0
+python train.py --model_name CNN --source_name CWRU --target_name MFPT --train_mode single_source --num_classes 3 --cuda_device 0
 ``` 
 ```shell
-python --model_name MFSAN --source_name CWRU,PU --target_name MFPT --train_mode multi_source --num_classes 3 --cuda_device 0
+python train.py --model_name MFSAN --source_name CWRU,PU --target_name MFPT --train_mode multi_source --num_classes 3 --cuda_device 0
 ``` 
 
 
