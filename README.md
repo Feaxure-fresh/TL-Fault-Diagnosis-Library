@@ -1,4 +1,4 @@
-# Domain Adaptation for Fault Diagnosis
+# Transfer learning (domain adaptation) for Fault Diagnosis
 
 ## Introduction
 This repository is an open-source library for cross-domain fault diagnosis, including Single-source Unsupervised Domain Adaptation (SUDA) and Multi-source Unsupervised Domain Adaptation (MUDA) methods.
