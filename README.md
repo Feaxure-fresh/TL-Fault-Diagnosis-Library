@@ -111,7 +111,7 @@ If you use this toolbox or benchmark in your research, please cite this project.
 ```latex
 @misc{dafd,
     author = {Jinyuan Zhang},
-    title = {Domain-Adaptation-Fault-Diagnosis},
+    title = {TL-Bearing-Fault-Diagnosis},
     year = {2022},
     publisher = {GitHub},
     journal = {GitHub repository},
