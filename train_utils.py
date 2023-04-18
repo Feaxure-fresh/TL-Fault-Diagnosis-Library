@@ -12,7 +12,7 @@ class InitTrain(object):
     def __init__(self, args):
         self.args = args
         if args.cuda_device:
-            self.device = torch.device("cuda")
+            self.device = torch.device("cuda:"+args.cuda_device)
             logging.info('using {} / {} gpus'.format(len(args.cuda_device.split(',')), torch.cuda.device_count()))
         else:
             self.device = torch.device("cpu")
