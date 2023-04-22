@@ -39,7 +39,7 @@ Download the data from a public bearing or gearbox fault dataset. Loading code f
 ### Within-dataset transfer
 According to different operation conditions, divide a specific dataset into folders like "op_0", "op_1" and so on. In each "op_?" folder, use subfolders for different categories, which contain the fault data.
 
-For example, CWRU dataset can be divided into 4 folders according to 4 motor speed. In each folder, data of this operation condition can be classified into 9 fault classes, such as 7 mil Inner Race fault, 14 mil Inner Race fault, 7 mil Outer Race fault and so on (referring to [this article](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9399341)). Then, the dataset folder is organized as
+For example, CWRU dataset can be divided into 4 folders according to 4 motor speed. In each folder, data of this operation condition can be classified into 9 fault classes, such as 7 mil Inner Race fault, 14 mil Inner Race fault, 7 mil Outer Race fault and so on (referring to [this article](https://ieeexplore.ieee.org/abstract/document/9399341)). Then, the dataset folder is organized as
 ```
 .
 └── dataset
