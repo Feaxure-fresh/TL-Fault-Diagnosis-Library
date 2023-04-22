@@ -6,7 +6,7 @@ import aug
 
 signal_size = 1024
 
-datasetname = ["inner_race_200_250_300", "outer_race_270", "normal_270"]
+datasetname = ["inner", "outer", "normal"]
 
 def get_files(root):
     '''
