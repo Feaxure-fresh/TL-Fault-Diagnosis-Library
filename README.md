@@ -77,7 +77,7 @@ For example, organize CWRU and MFPT datasets as follows for one-to-one transfer.
         ├── normal
         └── outer
 ```
-Note: It is highly recommended to modify the dataset loading code based on custom training.
+Note: It is highly recommended to modify the dataset loading code based on custom training. Make sure that `datasetname` in the loading code is consistent with names of your subfolders.
 
 ## Usage
 Load trained weights.
