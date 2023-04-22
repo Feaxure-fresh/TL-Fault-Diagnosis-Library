@@ -6,7 +6,7 @@ import aug
 
 signal_size = 1024
 
-datasetname = ["normal_load123", "inner_load2_48k", "outer_load2_48k"]
+datasetname = ["normal", "inner", "outer"]
 
 axis = ["_DE_time", "_FE_time", "_BA_time"]
 
