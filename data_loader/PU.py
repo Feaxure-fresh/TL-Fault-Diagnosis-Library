@@ -6,7 +6,7 @@ import aug
 
 signal_size = 1024
 
-datasetname = ["inner_race_01", "outer_race_01", "normal_001"]
+datasetname = ["inner", "outer", "normal"]
 sub_dir_nor = ["K001"]
 sub_dir_ir = ["KI01"]
 sub_dir_or = ["KA01"]
