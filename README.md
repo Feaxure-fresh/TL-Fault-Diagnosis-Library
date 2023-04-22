@@ -29,7 +29,7 @@ This repository is an open-source library for cross-domain fault diagnosis, incl
 
 ## Data Preparation
 ### Download datasets
-Download the data from a public bearing or gearbox fault dataset. Loading code for the following datasets is provided with reference to [this](https://github.com/ZhaoZhibin/DL-based-Intelligent-Diagnosis-Benchmark).
+Download the data from a public bearing or gearbox fault dataset. Loading code for the following datasets is provided referring to [this](https://github.com/ZhaoZhibin/DL-based-Intelligent-Diagnosis-Benchmark).
 - **[CWRU](https://engineering.case.edu/bearingdatacenter)** - Case Western Reserve University dataset.
 - **[MFPT](https://www.mfpt.org/fault-data-sets)** - Machinery Failure Prevention Technology dataset.
 - **[PU](https://mb.uni-paderborn.de/kat/forschung/datacenter/bearing-datacenter)** - Paderborn University dataset.
@@ -39,7 +39,7 @@ Download the data from a public bearing or gearbox fault dataset. Loading code f
 ### Within-dataset transfer
 According to different operation conditions, divide a specific dataset into folders like "op_0", "op_1" and so on. In each "op_?" folder, use subfolders for different categories, which contain the fault data.
 
-For example, divide CWRU dataset into 4 folders according to 4 motor speed. In each folder, data of this operation condition can be classified into 9 fault classes, such as 7 mil Inner Race fault, 14 mil Inner Race fault, 7 mil Outer Race fault and so on. Then, the dataset is organized as
+For example, CWRU dataset can be divided into 4 folders according to 4 motor speed. In each folder, data of this operation condition can be classified into 9 fault classes, such as 7 mil Inner Race fault, 14 mil Inner Race fault, 7 mil Outer Race fault and so on (referring to [this article](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9399341)). Then, the dataset folder is organized as
 ```
 .
 └── dataset
@@ -66,18 +66,18 @@ For example, organize CWRU and MFPT datasets as follows for one-to-one transfer.
 .
 └── dataset
     ├── CWRU
-    │   ├── inner_load2_48k
+    │   ├── inner
     |   |    ├── ***.mat
     |   |    |   ***.mat
     |   |    ...
-    │   ├── normal_load123
-    │   └── outer_load2_48k
+    │   ├── normal
+    │   └── outer
     └── MFPT
-        ├── inner_race_200_250_300
-        ├── normal_270
-        └── outer_race_270
+        ├── inner
+        ├── normal
+        └── outer
 ```
-Note: Modification of the dataset loading code for custom training is highly recommended.
+Note: It is highly recommended to modify the dataset loading code based on custom training.
 
 ## Usage
 Load trained weights.
@@ -85,7 +85,7 @@ Load trained weights.
 python train.py --model_name CNN --load_path ./CNN/single_source/model.pth --target_name CWRU_3 --num_classes 9 --cuda_device 0
 ```
 ### Within-dataset transfer
-One-to-one transfer.
+One-to-one transfer (such as CWRU operation condition 0 to condition 1).
 ```shell
 python train.py --model_name CNN --source_name CWRU_0 --target_name CWRU_1 --train_mode single_source --num_classes 9 --cuda_device 0
 ``` 
