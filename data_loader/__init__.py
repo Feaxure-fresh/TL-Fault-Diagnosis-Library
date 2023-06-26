@@ -7,4 +7,3 @@ from data_loader.CWRU_op import CWRU_op
 from data_loader.MFPT_op import MFPT_op
 from data_loader.XJTU_op import XJTU_op
 from data_loader.PU_op import PU_op
-from data_loader.DB_op import DB_op
