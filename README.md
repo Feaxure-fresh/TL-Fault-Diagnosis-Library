@@ -80,7 +80,7 @@ For example, organize CWRU and MFPT datasets as follows for one-to-one transfer.
 Note: It is highly recommended to modify the dataset loading code based on custom training. Make sure that `datasetname` in the loading code is consistent with names of your subfolders. The sampling length can also be changed by adjusting the `signal_size` inside.
 
 ## Usage
-Load trained weights.
+### Load trained weights
 ```shell
 python train.py --model_name CNN --load_path ./CNN/single_source/model.pth --target_name CWRU_3 --num_classes 9 --cuda_device 0
 ```
