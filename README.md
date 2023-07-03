@@ -115,7 +115,7 @@ If you use this toolbox or benchmark in your research, please cite this project.
     year = {2022},
     publisher = {GitHub},
     journal = {GitHub repository},
-    howpublished = {\url{https://github.com/Feaxure-fresh/Domain-Adaptation-Fault-Diagnosis}},
+    howpublished = {\url{https://github.com/Feaxure-fresh/TL-Bearing-Fault-Diagnosis}},
 }
 ```
 
