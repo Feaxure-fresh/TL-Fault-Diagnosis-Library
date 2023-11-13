@@ -1,56 +1,59 @@
 import argparse
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='Domain Adaptation for Fault Diagnosis')
+    parser = argparse.ArgumentParser(description='From github.com/Feaxure-fresh/TL-Bearing-Fault-Diagnosis')
  
     # basic parameters
-    parser.add_argument('--model_name', type=str, default='DAN',
-                        help='the name of the model (must in ./models directory)')
-    parser.add_argument('--source_name', type=str, default='CWRU_1',
-                        help='the name of the source data (select different conditions of a dataset with dataset_num, such as CWRU_0)')
-    parser.add_argument('--target_name', type=str, default='CWRU_2',
-                        help='the name of the target data (select different conditions of a dataset with dataset_num, such as CWRU_0)')
-    parser.add_argument('--data_dir', type=str, default="./dataset",
-                        help='the directory of the datasets')
+    parser.add_argument('--model_name', type=str, default='CNN',
+                        help='Name of the model (in ./models directory)')
+    parser.add_argument('--source', type=str, default='CWRU_0',
+                        help='Source data, separated by "," (select specific conditions of the dataset with name_number, such as CWRU_0)')
+    parser.add_argument('--target', type=str, default='CWRU_1',
+                        help='Target data (select specific conditions of the dataset with name_number, such as CWRU_0)')
+    parser.add_argument('--data_dir', type=str, default="./datasets",
+                        help='Directory of the datasets')
+    parser.add_argument('--faults', type=str, default='inner_07,ball_07,outer_07, inner_14, ball_14, outer_14, inner_21, ball_21, outer_21',
+                        help='Fault types (same as the name of the folder in the dataset, source data and target data must be the same)')
     parser.add_argument('--train_mode', type=str, default='single_source',
-                        choices=['single_source', 'source_combine', 'multi_source', 'supervised'],
-                        help='the mode for training (choose correctly before training)')
-    parser.add_argument('--num_classes', type=int, default=9,
-                        help='the number of classes for data (must be same for source and target data)')
-    parser.add_argument('--normlizetype', type=str, choices=['0-1', '-1-1', 'mean-std'], default='-1-1',
-                        help='data normalization methods')
+                        choices=['single_source', 'source_combine', 'multi_source'],
+                        help='Training mode (select correctly before training)')
     parser.add_argument('--cuda_device', type=str, default='0',
-                        help='assign device, only one GPU will be used ('' means using cpu)')
+                        help='Allocate the device to use only one GPU ('' means using cpu)')
     parser.add_argument('--save_dir', type=str, default='./ckpt',
-                        help='the directory to save the log and the model')
+                        help='Directory to save logs and model checkpoints')
     parser.add_argument('--max_epoch', type=int, default=30,
-                        help='number of epoch')
+                        help='Number of epochs')
     parser.add_argument('--batch_size', type=int, default=64,
-                        help='batchsize of the training process')
+                        help='Batch size')
     parser.add_argument('--num_workers', type=int, default=4,
-                        help='the number of workers for dataloader')
+                        help='Number of workers for dataloader')
+    parser.add_argument('--signal_size', type=int, default=1024,
+                        help='Signal length split by sliding window')
     parser.add_argument('--random_state', type=int, default=1,
-                        help='the random state for train test split')
+                        help='Random state for the entire training')
 
     # optimization information
-    parser.add_argument('--opt', type=str, choices=['sgd', 'adam'], default='sgd', help='the optimizer')
-    parser.add_argument('--lr', type=float, default=0.01, help='the initial learning rate')
-    parser.add_argument('--momentum', type=float, default=0.9, help='the momentum for sgd')
-    parser.add_argument('--weight_decay', type=float, default=5e-4, help='the weight decay')
+    parser.add_argument('--normlizetype', type=str, choices=['0-1', '-1-1', 'mean-std'], default='-1-1',
+                        help='Data normalization methods')
+    parser.add_argument('--opt', type=str, choices=['sgd', 'adam'], default='sgd', help='Optimizer')
+    parser.add_argument('--lr', type=float, default=0.01, help='Initial learning rate')
+    parser.add_argument('--momentum', type=float, default=0.9, help='Momentum for sgd')
+    parser.add_argument('--betas', type=tuple, default=(0.9, 0.999), help='Betas for adam')
+    parser.add_argument('--weight_decay', type=float, default=5e-4, help='Weight decay for both sgd and adam')
     parser.add_argument('--lr_scheduler', type=str, choices=['step', 'exp', 'stepLR', 'fix'], default='stepLR',
-                        help='the type of learning rate schedule')
+                        help='Type of learning rate schedule')
     parser.add_argument('--gamma', type=float, default=0.2,
-                        help='parameter for learning rate scheduler (not for fix)')
+                        help='Parameter for the learning rate scheduler (except "fix")')
     parser.add_argument('--steps', type=str, default='10',
-                        help='the step of learning rate decay for step and stepLR')
+                        help='Step of learning rate decay for "step" and "stepLR"')
     parser.add_argument('--tradeoff', type=list, default=['exp', 'exp', 'exp'],
-                        help='trade-off coefficients for sum of losses, integer or exp (exp means increasing from 0 to 1)')
-    parser.add_argument('--dropout', type=float, default=0., help='coefficient of dropout layers')
+                        help='Trade-off coefficients for the sum of losses, integer or "exp" ("exp" represents an increase from 0 to 1)')
+    parser.add_argument('--dropout', type=float, default=0., help='Dropout layer coefficient')
     
-    # save, load and display information
-    parser.add_argument('--save', type=bool, default=True, help='whether to save trained model')
+    # save and load
+    parser.add_argument('--save', type=bool, default=True, help='Save logs and trained model checkpoints')
     parser.add_argument('--load_path', type=str, default='',
-                        help='load a trained model from this path if needed')
+                        help='Load trained model checkpoints from this path (for testing, not for resuming training)')
     args = parser.parse_args()
     return args
     
