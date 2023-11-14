@@ -30,7 +30,17 @@ Our code runs fine with the following prerequisites:
 *  tqdm (>=4.46.1)
 *  Scipy (>=1.10)
 
-## Data Resources
+### Repository Access
+You can access our repository either by direct download or using git clone. Here’s how:
+#### Direct Download
+1. Click on the 'Code' button and select 'Download ZIP'.
+2. Extract the ZIP file to your desired location.
+#### Using Git Clone
+1. Open your command line interface.
+2. Navigate to the directory where you wish to clone the repository.
+3. Run the command: `git clone https://github.com/your-repository-link.git`
+
+
 ### Accessing Datasets
 Our repository supports several public datasets for fault diagnosis, with accompanying loading code. These include:
 - **[CWRU](https://engineering.case.edu/bearingdatacenter)** - Case Western Reserve University dataset.
