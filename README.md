@@ -42,6 +42,7 @@ You can access our repository either by direct download or using git clone. Here
 
 
 ### Accessing Datasets
+#### Supported datasets
 Our repository supports several public datasets for fault diagnosis, with accompanying loading code. These include:
 - **[CWRU](https://engineering.case.edu/bearingdatacenter)** - Case Western Reserve University dataset.
 - **[MFPT](https://www.mfpt.org/fault-data-sets)** - Machinery Failure Prevention Technology dataset.
@@ -49,29 +50,38 @@ Our repository supports several public datasets for fault diagnosis, with accomp
 - **[XJTU](https://biaowang.tech/xjtu-sy-bearing-datasets)** - Xi’an Jiaotong University dataset.
 - **[IMS](https://www.kaggle.com/datasets/vinayak123tyagi/bearing-dataset?resource=download)** - Intelligent Maintenance Systems dataset.
 
-### Within-dataset transfer
-According to different operation conditions, divide a specific dataset into folders like "op_0", "op_1" and so on. In each "op_?" folder, use subfolders for different categories, which contain the fault data.
+#### Setting Up Dataset Directory
+1. Create a folder named "datasets" in the root directory of the cloned repository.
+2. Download the desired datasets and place them into this "datasets" folder, follow the steps below:
 
-For example, CWRU dataset can be divided into 4 folders according to 4 motor speed. In each folder, data of this operation condition can be classified into 9 fault classes, such as 7 mil Inner Race fault, 14 mil Inner Race fault, 7 mil Outer Race fault and so on (referring to [this article](https://ieeexplore.ieee.org/abstract/document/9399341)). Then, the dataset folder is organized as
+##### Within-dataset Transfer
+For analyzing a specific dataset under different working conditions:
+1. Divide the dataset into separate folders named "condition_0", "condition_1", etc., each representing a unique operational condition.
+2. Within each "condition_?" folder, create subfolders for different fault categories containing the respective fault data.
+
+For example, for the CWRU dataset:
+   - Organize the dataset into folders based on motor speed (four speeds as four folders).
+   - Within each speed folder, categorize data into 9 fault classes, such as '7 mil Inner Race fault', '14 mil Inner Race fault', '7 mil Outer Race fault', etc., as detailed in [this IEEE article](https://ieeexplore.ieee.org/abstract/document/9399341).
+Example folder structure for CWRU dataset:
 ```
 .
 └── dataset
     └── CWRU
-        ├── op_0
+        ├── condition_0
         │   ├── ball_07
         │   │   └── 122.mat
         │   ├── inner_07
         │   │   └── 109.mat
         │   ...
-        ├── op_1
+        ├── condition_1
         │   ├── ball_07
         │   │   └── 123.mat
         │   ...
-        ├── op_2
+        ├── condition_2
         ...
 ```
 
-### Cross-dataset transfer
+##### Cross-dataset transfer
 You can also try to implement transfer among different datasets. In this case, the categories of faults contained in each dataset must be the same.
 
 For example, organize CWRU and MFPT datasets as follows for one-to-one transfer.
