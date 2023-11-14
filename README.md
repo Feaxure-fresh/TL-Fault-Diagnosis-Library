@@ -112,29 +112,45 @@ def your_dataset_name(item_path):
 This process allows for the seamless integration and utilization of diverse datasets within our fault diagnosis framework.
 
 ## Usage
+This section guides you through the process of training models for both within-dataset and cross-dataset transfer, and how to load pre-trained weights.
+
 ### Within-dataset transfer
-One-to-one transfer (such as CWRU operation condition 0 to condition 1).
+Train models using data from the same dataset but different operational conditions.
+
+#### One-to-One Transfer
+Example: Transfer from CWRU operation condition 0 to condition 1.
 ```shell
 python train.py --model_name DAN --source CWRU_0 --target CWRU_1 --faults inner_07,ball_07,outer_07,inner_14,ball_14,outer_14,inner_21,ball_21,outer_21 --train_mode single_source --cuda_device 0
-``` 
-Many-to-one transfer. 
+```
+
+#### Many-to-One Transfer
+Example: Transfer from CWRU operation condition 0 and condition 1 to condition 2.
 ```shell
 python train.py --model_name MFSAN --source CWRU_0,CWRU_1 --target CWRU_2 --faults inner_07,ball_07,outer_07,inner_14,ball_14,outer_14,inner_21,ball_21,outer_21 --train_mode multi_source --cuda_device 0 
-``` 
+```
+
 ### Cross-dataset transfer
-One-to-one transfer.
+Train models using data from different datasets.
+
+#### One-to-One Transfer
+Example: Transfer from CWRU to MFPT dataset.
 ```shell
 python train.py --model_name DAN --source_name CWRU --target_name MFPT --faults normal,inner,outer --train_mode single_source --cuda_device 0
-``` 
-Many-to-one transfer. 
+```
+
+#### Many-to-One Transfer
+Example: Transfer from CWRU and PU datasets to MFPT dataset.
 ```shell
 python train.py --model_name MFSAN --source_name CWRU,PU --target_name MFPT  --faults normal,inner,outer --train_mode multi_source --cuda_device 0
 ```
+
 ### Load trained weights
+Load and utilize weights from previously trained models.
+Example: Load weights and test on CWRU operation condition 3.
 ```shell
 python train.py --model_name MFSAN --load_path ./ckpt/MFSAN/multi_source/***.pth --faults inner_07,ball_07,outer_07,inner_14,ball_14,outer_14,inner_21,ball_21,outer_21 --source CWRU_0,CWRU_1 --target CWRU_3 --cuda_device 0
 ```
-Note: "--source" does not need to be defined for some models when loading weight testing. But for some models, definition is required, but the definition is only to know the number of source fields to define the model structure, and it does not matter what the sources are.
+Note: The `--source` flag is not necessary for some models when loading weights for testing. However, for certain models, the number of sources is required to define the model structure, and the specific sources used are not important in this context.
 
 ## Contact
 If you have any problem with our code or have some suggestions, feel free to contact Jinyuan Zhang (feaxure@outlook.com) or describe it in Issues.
