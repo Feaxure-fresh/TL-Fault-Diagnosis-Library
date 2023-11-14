@@ -112,28 +112,29 @@ def your_dataset_name(item_path):
 This process allows for the seamless integration and utilization of diverse datasets within our fault diagnosis framework.
 
 ## Usage
-### Load trained weights
-```shell
-python train.py --model_name CNN --load_path ./CNN/single_source/model.pth --target_name CWRU_3 --num_classes 9 --cuda_device 0
-```
 ### Within-dataset transfer
 One-to-one transfer (such as CWRU operation condition 0 to condition 1).
 ```shell
-python train.py --model_name CNN --source_name CWRU_0 --target_name CWRU_1 --train_mode single_source --num_classes 9 --cuda_device 0
+python train.py --model_name DAN --source CWRU_0 --target CWRU_1 --faults inner_07,ball_07,outer_07,inner_14,ball_14,outer_14,inner_21,ball_21,outer_21 --train_mode single_source --cuda_device 0
 ``` 
 Many-to-one transfer. 
 ```shell
-python train.py --model_name MFSAN --source_name CWRU_0,CWRU_1 --target_name CWRU_2 --train_mode multi_source --num_classes 9 --cuda_device 0
+python train.py --model_name MFSAN --source CWRU_0,CWRU_1 --target CWRU_2 --faults inner_07,ball_07,outer_07,inner_14,ball_14,outer_14,inner_21,ball_21,outer_21 --train_mode multi_source --cuda_device 0 
 ``` 
 ### Cross-dataset transfer
 One-to-one transfer.
 ```shell
-python train.py --model_name CNN --source_name CWRU --target_name MFPT --train_mode single_source --num_classes 3 --cuda_device 0
+python train.py --model_name DAN --source_name CWRU --target_name MFPT --faults normal,inner,outer --train_mode single_source --cuda_device 0
 ``` 
 Many-to-one transfer. 
 ```shell
-python train.py --model_name MFSAN --source_name CWRU,PU --target_name MFPT --train_mode multi_source --num_classes 3 --cuda_device 0
-``` 
+python train.py --model_name MFSAN --source_name CWRU,PU --target_name MFPT  --faults normal,inner,outer --train_mode multi_source --cuda_device 0
+```
+### Load trained weights
+```shell
+python train.py --model_name MFSAN --load_path ./ckpt/MFSAN/multi_source/***.pth --faults inner_07,ball_07,outer_07,inner_14,ball_14,outer_14,inner_21,ball_21,outer_21 --source CWRU_0,CWRU_1 --target CWRU_3 --cuda_device 0
+```
+Note: "--source" does not need to be defined for some models when loading weight testing. But for some models, definition is required, but the definition is only to know the number of source fields to define the model structure, and it does not matter what the sources are.
 
 ## Contact
 If you have any problem with our code or have some suggestions, feel free to contact Jinyuan Zhang (feaxure@outlook.com) or describe it in Issues.
