@@ -111,9 +111,7 @@ def your_dataset_name(item_path):
 ```
 This process allows for the seamless integration and utilization of diverse datasets within our fault diagnosis framework.
 
-## Usage
-This section guides you through the process of training models for both within-dataset and cross-dataset transfer, and how to load pre-trained weights.
-
+## Training Procedures
 ### Within-dataset transfer
 Train models using data from the same dataset but different operational conditions.
 
@@ -153,18 +151,19 @@ python train.py --model_name MFSAN --load_path ./ckpt/MFSAN/multi_source/***.pth
 Note: The `--source` flag is not necessary for some models when loading weights for testing. However, for certain models, the number of sources is required to define the model structure, and the specific sources used are not important in this context.
 
 ## Contact
-If you have any problem with our code or have some suggestions, feel free to contact Jinyuan Zhang (feaxure@outlook.com) or describe it in Issues.
+We welcome feedback, inquiries, and suggestions to improve our work. If you encounter any issues with our code or have recommendations, please don't hesitate to reach out. You can contact Jinyuan Zhang via email at feaxure@outlook.com, or alternatively, feel free to post your queries or suggestions in the [Issues](https://github.com/Feaxure-fresh/TL-Bearing-Fault-Diagnosis/issues) section of our GitHub repository.
 
 ## Citation
-If you use this toolbox or benchmark in your research, please cite this project. 
+Your support in citing our project when used in your research is highly appreciated. It helps in the recognition and dissemination of our work. Please use the following citation format:
 ```latex
-@misc{dafd,
+@misc{TL-Bearing-Fault-Diagnosis,
     author = {Jinyuan Zhang},
     title = {TL-Bearing-Fault-Diagnosis},
     year = {2022},
     publisher = {GitHub},
     journal = {GitHub repository},
-    howpublished = {\url{https://github.com/Feaxure-fresh/TL-Bearing-Fault-Diagnosis}},
+    howpublished = {\url{https://github.com/Feaxure-fresh/TL-Bearing-Fault-Diagnosis}}
 }
+
 ```
 
