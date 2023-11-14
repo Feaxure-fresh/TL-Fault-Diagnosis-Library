@@ -101,6 +101,15 @@ For instance, when organizing CWRU and MFPT datasets for one-to-one transfer:
         ├── normal
         └── outer
 ```
+### Custom Dataset Integration
+For incorporating other public datasets or your custom datasets, navigate to `data_loader/load_methods.py` in the repository. Implement your data loading function following this template:
+```python
+def your_dataset_name(item_path):
+    # Your code to extract the signal or data from the file
+    signal = take_out_data_from_file(item_path)
+    return signal
+```
+This process allows for the seamless integration and utilization of diverse datasets within our fault diagnosis framework.
 
 ## Usage
 ### Load trained weights
