@@ -40,9 +40,8 @@ You can access our repository either by direct download or using git clone. Here
 2. Navigate to the directory where you wish to clone the repository.
 3. Run the command: `git clone https://github.com/Feaxure-fresh/TL-Bearing-Fault-Diagnosis.git`
 
-
-### Accessing Datasets
-#### Supported datasets
+## Accessing Datasets
+### Supported datasets
 Our repository supports several public datasets for fault diagnosis, with accompanying loading code. These include:
 - **[CWRU](https://engineering.case.edu/bearingdatacenter)** - Case Western Reserve University dataset.
 - **[MFPT](https://www.mfpt.org/fault-data-sets)** - Machinery Failure Prevention Technology dataset.
@@ -50,11 +49,11 @@ Our repository supports several public datasets for fault diagnosis, with accomp
 - **[XJTU](https://biaowang.tech/xjtu-sy-bearing-datasets)** - Xi’an Jiaotong University dataset.
 - **[IMS](https://www.kaggle.com/datasets/vinayak123tyagi/bearing-dataset?resource=download)** - Intelligent Maintenance Systems dataset.
 
-#### Setting Up Dataset Directory
+### Setting Up Dataset Directory
 1. Create a folder named "datasets" in the root directory of the cloned repository.
 2. Download the desired datasets and place them into this "datasets" folder, follow the steps below:
 
-##### Within-dataset Transfer
+#### Within-dataset Transfer
 For analyzing a specific dataset under different working conditions:
 1. Divide the dataset into separate folders named "condition_0", "condition_1", etc., each representing a unique operational condition.
 2. Within each "condition_?" folder, create subfolders for different fault categories containing the respective fault data.
@@ -81,7 +80,7 @@ Example folder structure for CWRU dataset:
         ...
 ```
 
-##### Cross-dataset transfer
+#### Cross-dataset transfer
 You can also try to implement transfer among different datasets. In this case, the categories of faults contained in each dataset must be the same.
 
 For example, organize CWRU and MFPT datasets as follows for one-to-one transfer.
