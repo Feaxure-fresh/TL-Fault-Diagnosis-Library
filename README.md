@@ -64,7 +64,7 @@ For example, for the CWRU dataset:
 Example folder structure for CWRU dataset:
 ```
 .
-└── dataset
+└── datasets
     └── CWRU
         ├── condition_0
         │   ├── ball_07
@@ -81,12 +81,14 @@ Example folder structure for CWRU dataset:
 ```
 
 #### Cross-dataset transfer
-You can also try to implement transfer among different datasets. In this case, the categories of faults contained in each dataset must be the same.
+For implementing transfer between different datasets:
+1. Ensure that the categories of faults contained in each dataset are consistent.
+2. Organize the datasets such that there is a direct correspondence between the fault categories across datasets.
 
-For example, organize CWRU and MFPT datasets as follows for one-to-one transfer.
+For instance, when organizing CWRU and MFPT datasets for one-to-one transfer:
 ```
 .
-└── dataset
+└── datasets
     ├── CWRU
     │   ├── inner
     |   |    ├── ***.mat
@@ -99,7 +101,6 @@ For example, organize CWRU and MFPT datasets as follows for one-to-one transfer.
         ├── normal
         └── outer
 ```
-Note: It is highly recommended to modify the dataset loading code based on custom training. Make sure that `datasetname` in the loading code is consistent with names of your subfolders. The sampling length can also be changed by adjusting the `signal_size` inside.
 
 ## Usage
 ### Load trained weights
