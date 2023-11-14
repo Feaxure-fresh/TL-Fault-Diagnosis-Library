@@ -23,7 +23,6 @@ Our repository includes a diverse range of state-of-the-art methods, each accomp
 ## Getting Started
 ### Requirements
 Our code runs fine with the following prerequisites:
-
 *  Python 3 (>=3.8)
 *  Pytorch (>=1.10)
 *  Numpy (>=1.21.2)
