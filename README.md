@@ -144,6 +144,7 @@ python train.py --model_name MFSAN --source_name CWRU,PU --target_name MFPT  --f
 
 ### Load trained weights
 Load and utilize weights from previously trained models.
+
 Example: Load weights and test on CWRU operation condition 3.
 ```shell
 python train.py --model_name MFSAN --load_path ./ckpt/MFSAN/multi_source/***.pth --faults inner_07,ball_07,outer_07,inner_14,ball_14,outer_14,inner_21,ball_21,outer_21 --source CWRU_0,CWRU_1 --target CWRU_3 --cuda_device 0
