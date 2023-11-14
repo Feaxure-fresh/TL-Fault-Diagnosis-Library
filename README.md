@@ -20,14 +20,16 @@ Our repository includes a diverse range of state-of-the-art methods, each accomp
 - **MSSA** - A multi-source information transfer learning method with subdomain adaptation for cross-domain fault diagnosis. [[Published in Knowledge-Based Systems 2022]](https://reader.elsevier.com/reader/sd/pii/S0950705122001927?token=03BD384CA5D6E0E7E029B23C739C629913DE8F8BB37F6331F7D233FB6C57599BFFC86609EE63BE2F9FC43871D96A2F61&originRegion=us-east-1&originCreation=20230324021230) | [[View Code]](/models/MSSA.py)
 - **MixStyle** - Domain generalization with mixstyle. [[Published in ICLR 2021]](https://arxiv.org/abs/2104.02008) | [[View Code]](/models/MixStyle.py)
 
-## Installation
-### Prerequisites
-*  python3 (>=3.8)
+## Getting Started
+### Requirements
+Our code runs fine with the following prerequisites:
+
+*  Python 3 (>=3.8)
 *  Pytorch (>=1.10)
-*  numpy (>=1.21.2)
-*  pandas (>=1.5.3)
+*  Numpy (>=1.21.2)
+*  Pandas (>=1.5.3)
 *  tqdm (>=4.46.1)
-*  scipy (>=1.10)
+*  Scipy (>=1.10)
 
 ## Data Preparation
 ### Download datasets
