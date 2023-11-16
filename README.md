@@ -139,7 +139,7 @@ python train.py --model_name DAN --source_name CWRU --target_name MFPT --train_m
 #### Many-to-One Transfer
 Example: Transfer from CWRU and PU datasets to MFPT dataset.
 ```shell
-python train.py --model_name MFSAN --source_name CWRU,PU --target_name MFPT  --train_mode multi_source --cuda_device 0
+python train.py --model_name MFSAN --source_name CWRU,PU --target_name MFPT --train_mode multi_source --cuda_device 0
 ```
 
 ### Load trained weights
