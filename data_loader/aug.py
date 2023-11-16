@@ -1,4 +1,6 @@
+import random
 import numpy as np
+from scipy.signal import resample
 
 class Compose(object):
     def __init__(self, transforms):

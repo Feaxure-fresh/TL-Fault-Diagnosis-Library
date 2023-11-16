@@ -4,6 +4,7 @@ import pandas as pd
 from scipy.io import loadmat
 
 import aug
+import data_utils
 import load_methods
 
 
@@ -63,12 +64,12 @@ class dataset(object):
 
     def data_preprare(self, source_label=None, is_src=False, random_state=1):
         data_pd = pd.DataFrame({"data": self.data, "labels": self.labels})
-        data_pd = aug.balance_data(data_pd) if self.balance_data else data_pd
+        data_pd = data_utils.balance_data(data_pd) if self.balance_data else data_pd
         if is_src:
-            train_dataset = aug.dataset(list_data=data_pd, source_label=source_label, transform=self.transform['train'])
+            train_dataset = data_utils.dataset(list_data=data_pd, source_label=source_label, transform=self.transform['train'])
             return train_dataset
         else:
-            train_pd, val_pd = aug.train_test_split_(data_pd, test_size=self.test_size, num_classes=self.num_classes, random_state=random_state)
-            train_dataset = aug.dataset(list_data=train_pd, source_label=source_label, transform=self.transform['train'])
-            val_dataset = aug.dataset(list_data=val_pd, source_label=source_label, transform=self.transform['val'])
+            train_pd, val_pd = data_utils.train_test_split_(data_pd, test_size=self.test_size, num_classes=self.num_classes, random_state=random_state)
+            train_dataset = data_utils.dataset(list_data=train_pd, source_label=source_label, transform=self.transform['train'])
+            val_dataset = data_utils.dataset(list_data=val_pd, source_label=source_label, transform=self.transform['val'])
             return train_dataset, val_dataset
