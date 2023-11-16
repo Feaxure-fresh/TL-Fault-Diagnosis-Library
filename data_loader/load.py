@@ -9,12 +9,6 @@ import load_methods
 
 
 def get_files(root, dataset, faults, signal_size):
-    '''
-    root: The location of the data set.
-    condition: The working condition.
-    num_classes: The number of classes.
-    condition: The working condition.
-    '''
     data, labels = [], []
     data_load = getattr(load_methods, dataset)
     

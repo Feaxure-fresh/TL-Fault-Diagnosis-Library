@@ -9,12 +9,6 @@ import load_methods
 
 
 def get_files(root, dataset, faults, signal_size, condition=3):
-    '''
-    root: The location of the data set.
-    condition: The working condition.
-    num_classes: The number of classes.
-    condition: The working condition.
-    '''
     data, labels = [], []
     data_load = getattr(load_methods, dataset)
     
@@ -56,9 +50,9 @@ class dataset(object):
     
     def __init__(self, data_dir, dataset, faults, signal_size, normlizetype, condition=2,
                  balance_data=True, test_size=0.2):
-        self.num_classes = len(faults)
         self.balance_data = balance_data
         self.test_size = test_size
+        self.num_classes = len(faults)
         self.data, self.labels = get_files(root=data_dir, dataset=dataset, faults=faults, signal_size=signal_size, condition=condition)
         self.transform = data_transforms(normlizetype)
 
