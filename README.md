@@ -135,13 +135,13 @@ Train models using data from different datasets.
 #### One-to-One Transfer
 Example: Transfer from CWRU to MFPT dataset.
 ```shell
-python train.py --model_name DAN --source_name CWRU --target_name MFPT --train_mode single_source --cuda_device 0
+python train.py --model_name DAN --source CWRU --target MFPT --train_mode single_source --cuda_device 0
 ```
 
 #### Many-to-One Transfer
 Example: Transfer from CWRU and PU datasets to MFPT dataset.
 ```shell
-python train.py --model_name MFSAN --source_name CWRU,PU --target_name MFPT --train_mode multi_source --cuda_device 0
+python train.py --model_name MFSAN --source CWRU,PU --target MFPT --train_mode multi_source --cuda_device 0
 ```
 
 ### Load trained weights
