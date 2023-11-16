@@ -151,7 +151,7 @@ Example: Load weights and test on CWRU operation condition 3.
 ```shell
 python train.py --model_name MFSAN --load_path ./ckpt/MFSAN/multi_source/***.pth --source CWRU_0,CWRU_1 --target CWRU_3 --cuda_device 0
 ```
-Note: The `--source` flag is not necessary for some models when loading weights for testing. However, for certain models, the number of sources is required to define the model structure, and the specific sources used are not important in this context.
+NOTE: The `--source` flag is not necessary for some models when loading weights for testing. However, for certain models, the number of sources is required to define the model structure, and the specific sources used are not important in this context.
 
 ## Contact
 We welcome feedback, inquiries, and suggestions to improve our work. If you encounter any issues with our code or have recommendations, please don't hesitate to reach out. You can contact Jinyuan Zhang via email at feaxure@outlook.com, or alternatively, feel free to post your queries or suggestions in the [Issues](https://github.com/Feaxure-fresh/TL-Bearing-Fault-Diagnosis/issues) section of our GitHub repository.
