@@ -111,7 +111,7 @@ def your_dataset_name(item_path):
 ```
 This process allows for the seamless integration and utilization of diverse datasets within our fault diagnosis framework.
 
-NOTE: The folder names in the source directory should be consistent with those in the target directory (meaning the classes of source and target are the same).
+NOTE: The names of folders in the source directory should be consistent with those in the target directory (meaning the classes of source and target are the same).
 
 ## Training Procedures
 ### Within-dataset transfer
