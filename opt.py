@@ -12,8 +12,6 @@ def parse_args():
                         help='Target data (select specific conditions of the dataset with name_number, such as CWRU_0)')
     parser.add_argument('--data_dir', type=str, default="./datasets",
                         help='Directory of the datasets')
-    parser.add_argument('--faults', type=str, default='inner_07, ball_07, outer_07, inner_14, ball_14, outer_14, inner_21, ball_21, outer_21',
-                        help='Fault types (same as the names of the folders in the dataset, source data and target data must be the same)')
     parser.add_argument('--train_mode', type=str, default='single_source',
                         choices=['single_source', 'source_combine', 'multi_source'],
                         help='Training mode (select correctly before training)')

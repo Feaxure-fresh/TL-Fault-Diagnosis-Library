@@ -99,31 +99,32 @@ class InitTrain(object):
                 src, condition = source.split('_')[0], int(source.split('_')[1])
                 data_root = os.path.join(args.data_dir, src)
                 Dataset = importlib.import_module("data_loader.conditional_load").dataset
-                self.datasets[source] = Dataset(data_root, src, args.fault_list, args.signal_size, args.normlizetype, condition=condition
+                self.datasets[source] = Dataset(data_root, src, args.faults, args.signal_size, args.normlizetype, condition=condition
                                                 ).data_preprare(source_label=idx, is_src=True, random_state=args.random_state)
             else:
                 data_root = os.path.join(args.data_dir, source)
                 Dataset = importlib.import_module("data_loader.load").dataset
-                self.datasets[source] = Dataset(data_root, source, args.fault_list, args.signal_size, args.normlizetype
+                self.datasets[source] = Dataset(data_root, source, args.faults, args.signal_size, args.normlizetype
                                                 ).data_preprare(source_label=idx, is_src=True, random_state=args.random_state) 
         for key in self.datasets.keys():
-            logging.info('Source set {} length {}.'.format(key, len(self.datasets[key])))
+            logging.info('Source set {} number of samples {}.'.format(key, len(self.datasets[key])))
             self.datasets[key].summary()
         
         if '_' in args.target:
             tgt, condition = args.target.split('_')[0], int(args.target.split('_')[1])
             data_root = os.path.join(args.data_dir, tgt)
             Dataset = importlib.import_module("data_loader.conditional_load").dataset
-            self.datasets['train'], self.datasets['val'] = Dataset(data_root, tgt, args.fault_list, args.signal_size, args.normlizetype, condition=condition
+            self.datasets['train'], self.datasets['val'] = Dataset(data_root, tgt, args.faults, args.signal_size, args.normlizetype, condition=condition
                                                                    ).data_preprare(source_label=idx+1, is_src=False, random_state=args.random_state)
         else:
             data_root = os.path.join(args.data_dir, args.target)
             Dataset = importlib.import_module("data_loader.load").dataset
-            self.datasets['train'], self.datasets['val'] = Dataset(data_root, args.target, args.fault_list, args.signal_size, args.normlizetype
+            self.datasets['train'], self.datasets['val'] = Dataset(data_root, args.target, args.faults, args.signal_size, args.normlizetype
                                                                     ).data_preprare(source_label=idx+1, is_src=False, random_state=args.random_state)           
-        logging.info('Training set length {}. Validation set length {}.'.format(
-                                         len(self.datasets['train']), len(self.datasets['val'])))
-        self.datasets['train'].summary(); self.datasets['val'].summary()
+        logging.info('Training set number of samples {}.'.format(len(self.datasets['train'])))
+        self.datasets['train'].summary()
+        logging.info('Validation set number of samples {}.'.format(len(self.datasets['val'])))
+        self.datasets['val'].summary()
         
         dataset_keys = args.source_name + ['train', 'val']
         if concat_src:

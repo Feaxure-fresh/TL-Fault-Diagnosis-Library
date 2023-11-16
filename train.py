@@ -66,8 +66,16 @@ if __name__ == '__main__':
     
     # training
     logger, args = creat_file(args)
-    args.fault_list = [x.strip() for x in list(args.faults.split(','))]
-    args.num_classes = len(args.fault_list)
+    if '_' in args.target:
+        tgt, condition = args.target.split('_')[0], int(args.target.split('_')[1])
+        data_root = os.path.join(args.data_dir, tgt)
+        args.faults = os.listdir(os.path.join(data_root, 'condition_%d' % condition))
+        args.num_classes = len(args.faults)
+    else:
+        data_root = os.path.join(args.data_dir, args.target)
+        args.faults = os.listdir(data_root)
+        args.num_classes = len(args.faults)
+    logging.info('Detect {} classes: {}'.format(args.num_classes, args.faults)) 
     trainer = importlib.import_module(f"models.{args.model_name}").Trainset(args)
     if args.load_path:
         trainer.load_model()
