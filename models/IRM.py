@@ -26,7 +26,7 @@ class InvariancePenaltyLoss(nn.Module):
         loss_2 = F.cross_entropy(y[1::2] * self.scale, labels[1::2])
         grad_1 = torch.autograd.grad(loss_1, [self.scale], create_graph=True)[0]
         grad_2 = torch.autograd.grad(loss_2, [self.scale], create_graph=True)[0]
-        penalty = torch.sum(grad_1 * grad_2)
+        penalty = torch.stack([torch.sum(grad_1**2), torch.sum(grad_2**2)]).mean()
         
         return penalty
 
