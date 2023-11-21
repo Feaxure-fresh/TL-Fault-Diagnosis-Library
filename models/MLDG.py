@@ -1,3 +1,8 @@
+'''
+Paper: Li, D., Yang, Y., Song, Y.Z. and Hospedales, T., 2018, April. Learning to generalize: Meta-learning for domain generalization.
+       In Proceedings of the AAAI conference on artificial intelligence (Vol. 32, No. 1).
+Reference code: https://github.com/thuml/Transfer-Learning-Library
+'''
 import torch
 import higher
 import logging
