@@ -69,10 +69,11 @@ class GeneralModule(nn.Module):
     
     def __init__(self, args, grl):
         super(GeneralModule, self).__init__()
+        output_size = 2560
         self.G = model_base.FeatureExtractor(in_channel=1)
-        self.C1 = model_base.ClassifierMLP(input_size=512, output_size=args.num_classes,
+        self.C1 = model_base.ClassifierMLP(input_size=output_size, output_size=args.num_classes,
                         dropout=args.dropout, last=None)
-        self.C2 = model_base.ClassifierMLP(input_size=512, output_size=args.num_classes,
+        self.C2 = model_base.ClassifierMLP(input_size=output_size, output_size=args.num_classes,
                         dropout=args.dropout, last=None)
         self.grl_layer = utils.WarmStartGradientReverseLayer(alpha=1.0, lo=0.0, hi=0.1, max_iters=1000,
                                                        auto_step=False) if grl is None else grl

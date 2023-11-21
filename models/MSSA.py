@@ -28,17 +28,17 @@ class Trainset(InitTrain):
     
     def __init__(self, args):
         super(Trainset, self).__init__(args)
-        
+        output_size = 2560
         self.G_shared = model_base.FeatureExtractor(in_channel=1).to(self.device)
         '''
         # Specific feature extractors defined in the paper will not be used.
         self.Gs_specific = nn.ModuleList([nn.Sequential(
                                                     nn.Dropout(args.dropout),
-                                                    nn.Linear(512, 512),
+                                                    nn.Linear(output_size, output_size),
                                                     nn.ReLU()) \
                                                     for _ in range(self.num_source)]).to(self.device)
         '''
-        self.Cs = nn.ModuleList([model_base.ClassifierMLP(input_size=512, output_size=args.num_classes,
+        self.Cs = nn.ModuleList([model_base.ClassifierMLP(input_size=output_size, output_size=args.num_classes,
                                                           dropout=args.dropout, last=None) \
                                                           for _ in range(self.num_source)]).to(self.device)
         self.mkmmd = utils.MultipleKernelMaximumMeanDiscrepancy(

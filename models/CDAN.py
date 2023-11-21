@@ -113,7 +113,7 @@ class Trainset(InitTrain):
     
     def __init__(self, args):
         super(Trainset, self).__init__(args)
-        output_size = 512
+        output_size = 2560
         self.domain_discri = model_base.ClassifierMLP(input_size=output_size * args.num_classes, output_size=1,
                         dropout=args.dropout, last='sigmoid').to(self.device)
         grl = utils.GradientReverseLayer() 

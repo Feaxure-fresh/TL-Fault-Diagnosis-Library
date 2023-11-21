@@ -1,11 +1,9 @@
-'''
-Paper: Ganin, Y. and Lempitsky, V., 2015, June. Unsupervised domain adaptation by backpropagation.
-    In International conference on machine learning (pp. 1180-1189). PMLR.
-Reference code: https://github.com/thuml/Transfer-Learning-Library
-'''
 import torch
+import higher
 import logging
+import numpy as np
 from tqdm import tqdm
+import torch.nn as nn
 import torch.nn.functional as F
 from collections import defaultdict
 
@@ -18,13 +16,10 @@ class Trainset(InitTrain):
     
     def __init__(self, args):
         super(Trainset, self).__init__(args)
-        output_size = 2560
+        self.mkmmd = utils.MultipleKernelMaximumMeanDiscrepancy(
+                    kernels=[utils.GaussianKernel(alpha=2 ** k) for k in range(-3, 2)])
         self.model = model_base.BaseModel(input_size=1, num_classes=args.num_classes,
-                                     dropout=args.dropout).to(self.device)
-        self.domain_discri = model_base.ClassifierMLP(input_size=output_size, output_size=1,
-                        dropout=args.dropout, last='sigmoid').to(self.device)
-        grl = utils.GradientReverseLayer() 
-        self.domain_adv = utils.DomainAdversarialLoss(self.domain_discri, grl=grl)
+                                      dropout=args.dropout).to(self.device)
         self._init_data()
     
     def save_model(self):
@@ -40,15 +35,12 @@ class Trainset(InitTrain):
         
     def train(self):
         args = self.args
+        src = args.source_name
         
-        if args.train_mode == 'single_source':
-            src = args.source_name[0]
-        elif args.train_mode == 'source_combine':
-            src = args.source_name
-        elif args.train_mode == 'multi_source':
-            raise Exception("This model cannot be trained in multi_source mode.")
+        if args.train_mode != 'multi_source':
+            raise Exception("For this model, invalid train mode: {}".format(args.train_mode))
 
-        self.optimizer = self._get_optimizer([self.model, self.domain_discri])
+        self.optimizer = self._get_optimizer(self.model)
         self.lr_scheduler = self._get_lr_scheduler(self.optimizer)
         
         best_acc = 0.0
@@ -66,35 +58,47 @@ class Trainset(InitTrain):
    
             # Set model to train mode or evaluate mode
             self.model.train()
-            self.domain_discri.train()
             epoch_loss = defaultdict(float)
             tradeoff = self._get_tradeoff(args.tradeoff, epoch) 
             
-            num_iter = len(self.dataloaders['train'])
+            num_iter = len(self.dataloaders['train'])              
             for i in tqdm(range(num_iter), ascii=True):
-                target_data, target_labels = utils.get_next_batch(self.dataloaders,
-                						 self.iters, 'train', self.device)
-                source_data, source_labels = utils.get_next_batch(self.dataloaders,
-            						     self.iters, src, self.device)
-                # forward
+                source_data, source_labels = [], []
+                for idx in range(self.num_source):
+                    source_data_item, source_labels_item = utils.get_next_batch(self.dataloaders,
+                                                self.iters, src[idx], self.device)
+                    source_data.append(source_data_item)
+                    source_labels.append(source_labels_item)
+                idx_range = torch.arange(0, self.num_source)
+                train_idx = np.random.choice(idx_range, size=(self.num_source - 1,), replace=False)
+                test_idx = np.setdiff1d(idx_range, train_idx)
+                
                 self.optimizer.zero_grad()
-                data = torch.cat((source_data, target_data), dim=0)
+                with higher.innerloop_ctx(self.model, self.optimizer, copy_initial_weights=False) as (inner_model, inner_optimizer):
+                    loss_inner = 0
+                    for idx in train_idx:
+                        y, _ = inner_model(source_data[idx])
+                        loss_inner += F.cross_entropy(y, source_labels[idx]) / len(train_idx)
+                    inner_optimizer.step(loss_inner)
+
+                    loss_outer = 0
+                    cls_acc = 0
+
+                    for idx in train_idx:
+                        y, _ = self.model(source_data[idx])
+                        loss_outer += F.cross_entropy(y, source_labels[idx]) / len(train_idx)
+
+                    for idx in test_idx:
+                        y, _ = inner_model(source_data[idx])
+                        loss_outer += F.cross_entropy(y, source_labels[idx]) * tradeoff[0] / len(test_idx)
+                        cls_acc += utils.get_accuracy(y, source_labels[idx]) / len(test_idx)
+                epoch_acc['Source Data']  += cls_acc
                 
-                y, f = self.model(data)
-                f_s, f_t = f.chunk(2, dim=0)
-                y_s, _ = y.chunk(2, dim=0)
-        
-                loss_c = F.cross_entropy(y_s, source_labels)
-                loss_d, acc_d = self.domain_adv(f_s, f_t)
-                loss = loss_c + tradeoff[0] * loss_d
-                epoch_acc['Source Data']  += utils.get_accuracy(y_s, source_labels)
-                epoch_acc['Discriminator']  += acc_d
-                
-                epoch_loss['Source Classifier'] += loss_c
-                epoch_loss['Discriminator'] += loss_d
+                epoch_loss['Meta-train'] += loss_inner
+                epoch_loss['Meta_test'] += loss_outer
 
                 # backward
-                loss.backward()
+                loss_outer.backward()
                 self.optimizer.step()
                             
             # Print the train and val information via each epoch
@@ -102,14 +106,14 @@ class Trainset(InitTrain):
                 logging.info('Train-Loss {}: {:.4f}'.format(key, epoch_loss[key]/num_iter))
             for key in epoch_acc.keys():
                 logging.info('Train-Acc {}: {:.4f}'.format(key, epoch_acc[key]/num_iter))
-                
+            
             # log the best model according to the val accuracy
             new_acc = self.test()
             if new_acc >= best_acc:
                 best_acc = new_acc
                 best_epoch = epoch
             logging.info("The best model epoch {}, val-acc {:.4f}".format(best_epoch, best_acc))
-                    
+            
             if self.lr_scheduler is not None:
                 self.lr_scheduler.step()
             

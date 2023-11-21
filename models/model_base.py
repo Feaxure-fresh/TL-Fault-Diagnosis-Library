@@ -42,12 +42,12 @@ class ClassifierMLP(nn.Module):
         return y
 
 
-class FeatureExtractor(nn.Module):
+class CNNlayer(nn.Module):
 
     def __init__(self,
-                 in_channel=1, kernel_size=7, stride=1, padding=1,
-                 mp_kernel_size=2, mp_stride=2):
-        super(FeatureExtractor, self).__init__()
+                 in_channel=1, kernel_size=8, stride=1, padding=1,
+                 mp_kernel_size=2, mp_stride=2, dropout=0.):
+        super(CNNlayer, self).__init__()
 
         layer1 = nn.Sequential(
             nn.Conv1d(in_channel, 4, kernel_size=kernel_size, stride=stride, padding=padding),
@@ -80,17 +80,39 @@ class FeatureExtractor(nn.Module):
             nn.AdaptiveMaxPool1d(4),
             nn.Flatten())
         
+        dp = nn.Dropout(dropout)
+        
         self.fs = nn.Sequential(
             layer1,
             layer2,
             layer3,
             layer4,
+            dp,
             layer5)
 
     def forward(self, tar, x=None, y=None):
         h = self.fs(tar)
         
         return h
+
+
+class FeatureExtractor(nn.Module):
+    
+    def __init__(self, in_channel, window_sizes=[4, 8, 16, 24, 32], block=CNNlayer, dropout=0.):
+        super(FeatureExtractor, self).__init__()
+       
+        self.convs = nn.ModuleList([
+                       block(in_channel=in_channel, kernel_size=h, dropout=dropout)
+                       for h in window_sizes])
+                              
+        self.fl = nn.Flatten()
+
+    def forward(self, input):
+        out = [conv(input) for conv in self.convs]
+        out = torch.cat(out, dim=1)
+        out = self.fl(out)
+        
+        return out
 
 
 class BaseModel(nn.Module):
@@ -101,9 +123,9 @@ class BaseModel(nn.Module):
                  dropout):
         super(BaseModel, self).__init__()
         
-        self.G = FeatureExtractor(in_channel=input_size)
+        self.G = FeatureExtractor(in_channel=input_size, dropout=dropout)
         
-        self.C = ClassifierMLP(512, num_classes, dropout, last=None)
+        self.C = ClassifierMLP(2560, num_classes, dropout, last=None)
         
     def forward(self, input):
         f = self.G(input)

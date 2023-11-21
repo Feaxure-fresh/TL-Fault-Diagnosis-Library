@@ -1,3 +1,8 @@
+'''
+Paper: Pan, X., Luo, P., Shi, J. and Tang, X., 2018. Two at once: Enhancing learning and generalization capacities via ibn-net.
+       In Proceedings of the European Conference on Computer Vision (ECCV) (pp. 464-479).
+Reference code: https://github.com/thuml/Transfer-Learning-Library
+'''
 import torch
 import logging
 import torch.nn as nn
@@ -32,45 +37,49 @@ class IBNlayer(nn.Module):
                  mp_kernel_size=2, mp_stride=2, dropout=0.):
         super(IBNlayer, self).__init__()
 
-        self.layer1 = nn.Sequential(
-            nn.Conv1d(in_channel, 4, kernel_size=kernel_size, padding=1),
+        layer1 = nn.Sequential(
+            nn.Conv1d(in_channel, 4, kernel_size=kernel_size, stride=stride, padding=padding),
             IBN(4),
             nn.ReLU(inplace=True),
-            nn.MaxPool1d(kernel_size=2, stride=2),
-            )
-        
-        self.layer2 = nn.Sequential(
-            nn.Conv1d(4, 16, kernel_size=kernel_size, padding=1),
+            nn.MaxPool1d(kernel_size=mp_kernel_size, stride=mp_stride))
+
+        layer2 = nn.Sequential(
+            nn.Conv1d(4, 16, kernel_size=kernel_size, stride=stride, padding=padding),
             IBN(16),
             nn.ReLU(inplace=True),
-            nn.MaxPool1d(kernel_size=2, stride=2),
-            )
+            nn.MaxPool1d(kernel_size=mp_kernel_size, stride=mp_stride))
 
-        self.layer3 = nn.Sequential(
-            nn.Conv1d(16, 32, kernel_size=kernel_size, padding=1),
+        layer3 = nn.Sequential(
+            nn.Conv1d(16, 32, kernel_size=kernel_size, stride=stride, padding=padding),
             nn.BatchNorm1d(32),
             nn.ReLU(inplace=True),
-            nn.MaxPool1d(kernel_size=2, stride=2))
+            nn.MaxPool1d(kernel_size=mp_kernel_size, stride=mp_stride))
 
-        self.layer4 = nn.Sequential(
-            nn.Conv1d(32, 64, kernel_size=kernel_size, padding=1),
+        layer4 = nn.Sequential(
+            nn.Conv1d(32, 64, kernel_size=kernel_size, stride=stride, padding=padding),
             nn.BatchNorm1d(64),
             nn.ReLU(inplace=True),
-            nn.MaxPool1d(kernel_size=2, stride=2))
+            nn.MaxPool1d(kernel_size=mp_kernel_size, stride=mp_stride))
 
-        self.layer5 = nn.Sequential(
-            nn.Conv1d(64, 128, kernel_size=kernel_size, padding=1),
+        layer5 = nn.Sequential(
+            nn.Conv1d(64, 128, kernel_size=kernel_size, stride=stride, padding=padding),
             nn.BatchNorm1d(128),
             nn.ReLU(inplace=True),
             nn.AdaptiveMaxPool1d(4),
             nn.Flatten())
         
+        dp = nn.Dropout(dropout)
+        
+        self.fs = nn.Sequential(
+            layer1,
+            layer2,
+            layer3,
+            layer4,
+            dp,
+            layer5)
+
     def forward(self, tar, x=None, y=None):
-        h = self.layer1(tar)
-        h = self.layer2(h)
-        h = self.layer3(h)
-        h = self.layer4(h)
-        h = self.layer5(h)
+        h = self.fs(tar)
         
         return h
 
@@ -79,9 +88,10 @@ class Trainset(InitTrain):
     
     def __init__(self, args):
         super(Trainset, self).__init__(args)
+        output_size = 2560
         self.model = nn.Sequential(
             model_base.FeatureExtractor(in_channel=1, block=IBNlayer, dropout=args.dropout),
-            model_base.ClassifierMLP(512, args.num_classes, args.dropout, last=None)).to(self.device)
+            model_base.ClassifierMLP(output_size, args.num_classes, args.dropout, last=None)).to(self.device)
         self._init_data()
     
     def save_model(self):

@@ -20,7 +20,7 @@ class Trainset(InitTrain):
     
     def __init__(self, args):
         super(Trainset, self).__init__(args)
-        output_size = 512
+        output_size = 2560
         self.mkmmd = utils.MultipleKernelMaximumMeanDiscrepancy(
                     kernels=[utils.GaussianKernel(alpha=2 ** k) for k in range(-3, 2)])
         self.G = model_base.FeatureExtractor(in_channel=1).to(self.device)
