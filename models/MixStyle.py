@@ -34,8 +34,8 @@ class MixStyle(nn.Module):
 
         batch_size = x.size(0)
 
-        mu = x.mean(dim=[1, 2], keepdim=True)
-        var = x.var(dim=[1, 2], keepdim=True)
+        mu = x.mean(dim=-1, keepdim=True)
+        var = x.var(dim=-1, keepdim=True)
         sigma = (var + self.eps).sqrt()
         mu, sigma = mu.detach(), sigma.detach()
         x_normed = (x - mu) / sigma
