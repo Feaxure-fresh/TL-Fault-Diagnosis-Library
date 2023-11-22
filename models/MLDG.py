@@ -80,11 +80,12 @@ class Trainset(InitTrain):
                 
                 self.optimizer.zero_grad()
                 with higher.innerloop_ctx(self.model, self.optimizer, copy_initial_weights=False) as (inner_model, inner_optimizer):
-                    loss_inner = 0
-                    for idx in train_idx:
-                        y, _ = inner_model(source_data[idx])
-                        loss_inner += F.cross_entropy(y, source_labels[idx]) / len(train_idx)
-                    inner_optimizer.step(loss_inner)
+                    for _ in range(1):  # Single gradient update (for simplicity)
+                        loss_inner = 0
+                        for idx in train_idx:
+                            y, _ = inner_model(source_data[idx])
+                            loss_inner += F.cross_entropy(y, source_labels[idx]) / len(train_idx)
+                        inner_optimizer.step(loss_inner)
 
                     loss_outer = 0
                     cls_acc = 0

@@ -1,8 +1,3 @@
-'''
-Paper: Krueger, D., Caballero, E., Jacobsen, J.H., Zhang, A., Binas, J., Zhang, D., Le Priol, R. and Courville, A., 2021, July.
-       Out-of-distribution generalization via risk extrapolation (rex). In International Conference on Machine Learning (pp. 5815-5826). PMLR.
-Reference code: https://github.com/thuml/Transfer-Learning-Library
-'''
 import torch
 import logging
 from tqdm import tqdm
@@ -80,7 +75,6 @@ class Trainset(InitTrain):
                 loss_ce_per_domain = torch.zeros(self.num_source).to(self.device)
                 for idx in range(self.num_source):
                     loss_ce_per_domain[idx] = F.cross_entropy(pred_per_domain[idx], labels_per_domain[idx])
-                print(loss_ce_per_domain)
 
                 # cls loss
                 loss_ce = loss_ce_per_domain.mean()
@@ -88,7 +82,6 @@ class Trainset(InitTrain):
                 loss_penalty = ((loss_ce_per_domain - loss_ce) ** 2).mean()
 
                 loss = loss_ce + tradeoff[0] * loss_penalty
-
                 epoch_acc['Source Data']  += utils.get_accuracy(pred_all, source_labels)
                 
                 epoch_loss['Source Classifier'] += loss_ce

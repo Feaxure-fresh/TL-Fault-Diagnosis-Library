@@ -119,12 +119,10 @@ class Trainset(InitTrain):
     def __init__(self, args):
         super(Trainset, self).__init__(args)
         output_size = 2560
-        self.mkmmd = utils.MultipleKernelMaximumMeanDiscrepancy(
-                    kernels=[utils.GaussianKernel(alpha=2 ** k) for k in range(-3, 2)])
         self.G = model_base.FeatureExtractor(in_channel=1, block=MixStyleLayer, dropout=args.dropout).to(self.device)
         self.C = model_base.ClassifierMLP(input_size=output_size, output_size=args.num_classes,
                                           dropout=args.dropout, last=None).to(self.device)
-        self._init_data()
+        self._init_data(concat_src=True)
     
     def save_model(self):
         torch.save({
@@ -141,13 +139,6 @@ class Trainset(InitTrain):
     
     def train(self):
         args = self.args
-
-        if args.train_mode == 'single_source':
-            src = args.source_name[0]
-        elif args.train_mode == 'source_combine':
-            src = args.source_name
-        elif args.train_mode == 'multi_source':
-            raise Exception("This model cannot be trained in multi_source mode.")
         
         self.optimizer = self._get_optimizer([self.G, self.C])
         self.lr_scheduler = self._get_lr_scheduler(self.optimizer)
@@ -169,30 +160,20 @@ class Trainset(InitTrain):
             self.G.train()
             self.C.train()
             epoch_loss = defaultdict(float)
-            tradeoff = self._get_tradeoff(args.tradeoff, epoch) 
             
             num_iter = len(self.dataloaders['train'])
             for i in tqdm(range(num_iter), ascii=True):
-                target_data, target_labels = utils.get_next_batch(self.dataloaders,
-                						 self.iters, 'train', self.device)
                 source_data, source_labels = utils.get_next_batch(self.dataloaders,
-            						     self.iters, src, self.device)
+            						     self.iters, 'concat_source', self.device)
                 # forward
                 self.optimizer.zero_grad()
-                data = torch.cat((source_data, target_data), dim=0)
+                f = self.G(source_data)
+                pred = self.C(f)
                 
-                f = self.G(data)
-                y = self.C(f)
-                y_s, _ = y.chunk(2, dim=0)
-                f_s, f_t = f.chunk(2, dim=0)
+                loss = F.cross_entropy(pred, source_labels)
+                epoch_acc['Source Data']  += utils.get_accuracy(pred, source_labels)
                 
-                loss_mmd = self.mkmmd(f_s, f_t)
-                loss_c = F.cross_entropy(y_s, source_labels)
-                loss = loss_c + tradeoff[0] * loss_mmd
-                epoch_acc['Source Data']  += utils.get_accuracy(y_s, source_labels)
-                
-                epoch_loss['Source Classifier'] += loss_c
-                epoch_loss['Mk MMD'] += loss_mmd
+                epoch_loss['Source Classifier'] += loss
 
                 # backward
                 loss.backward()

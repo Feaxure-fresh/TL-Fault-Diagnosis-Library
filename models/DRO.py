@@ -1,8 +1,3 @@
-'''
-Paper: Sagawa, S., Koh, P.W., Hashimoto, T.B. and Liang, P., 2019. Distributionally robust neural networks for group shifts:
-       On the importance of regularization for worst-case generalization. arXiv preprint arXiv:1911.08731.
-Reference code: https://github.com/thuml/Transfer-Learning-Library
-'''
 import torch
 import logging
 from tqdm import tqdm
@@ -123,7 +118,6 @@ class Trainset(InitTrain):
 
                 # weighted cls loss
                 loss = (loss_per_domain * domain_weight).sum()
-
                 epoch_acc['Source Data']  += cls_acc
                 
                 epoch_loss['Source Classifier'] += loss
