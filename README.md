@@ -25,6 +25,7 @@ Our repository includes a diverse range of state-of-the-art methods, each accomp
 - **IBN** - Two at once: Enhancing learning and generalization capacities via IBN-Net. [Published in ECCV 2018](https://openaccess.thecvf.com/content_ECCV_2018/papers/Xingang_Pan_Two_at_Once_ECCV_2018_paper.pdf) | [View Code](/models/IBN.py)
 - **MLDG** - Learning to generalize: Meta-learning for domain generalization. [Published in AAAI 2018](https://ojs.aaai.org/index.php/AAAI/article/view/11596) | [View Code](/models/MLDG.py)
 - **GroupDRO** - Distributionally robust neural networks for group shifts: On the importance of regularization for worst-case generalization. [Published in ICLR 2020](https://arxiv.org/pdf/1911.08731.pdf) | [View Code](/models/DRO.py)
+- **VREx** - Out-of-distribution generalization via risk extrapolation. [Published in ICML 2021](https://proceedings.mlr.press/v139/krueger21a/krueger21a.pdf) | [View Code](/models/VREx.py)
 
 ## Getting Started
 ### Requirements
