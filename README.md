@@ -1,4 +1,4 @@
-# Transfer Learning for Fault Diagnosis
+![image](https://github.com/Feaxure-fresh/TL-Bearing-Fault-Diagnosis/assets/69803979/76ec676b-aa77-4f9d-b79b-09e844ef25df)# Transfer Learning for Fault Diagnosis
 
 ## Overview
 Welcome to our repository dedicated to advancing the field of cross-domain fault diagnosis through transfer learning. Our focus lies in Single-source Unsupervised Domain Adaptation (SUDA) and Multi-source Unsupervised Domain Adaptation (MUDA), offering a rich collection of resources and methodologies.
@@ -23,6 +23,7 @@ Our repository includes a diverse range of state-of-the-art methods, each accomp
 - **IRM** - Invariant risk minimization. [Published in ArXiv](https://arxiv.org/abs/1907.02893) | [View Code](/models/IRM.py)
 - **MixStyle** - Domain generalization with mixstyle. [Published in ICLR 2021](https://arxiv.org/abs/2104.02008) | [View Code](/models/MixStyle.py)
 - **IBN** - Two at once: Enhancing learning and generalization capacities via IBN-Net. [Published in ECCV 2018](https://openaccess.thecvf.com/content_ECCV_2018/papers/Xingang_Pan_Two_at_Once_ECCV_2018_paper.pdf) | [View Code](/models/IBN.py)
+- **MLDG** - Learning to generalize: Meta-learning for domain generalization. [Published in AAAI 2018](https://ojs.aaai.org/index.php/AAAI/article/view/11596) | [View Code](/models/MLDG.py)
 
 ## Getting Started
 ### Requirements
