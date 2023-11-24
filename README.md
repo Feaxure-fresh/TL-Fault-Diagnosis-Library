@@ -22,6 +22,7 @@ Our repository includes a diverse range of state-of-the-art methods, each accomp
 ### Domain Generalization
 - **IRM** - Invariant risk minimization. [Published in ArXiv](https://arxiv.org/abs/1907.02893) | [View Code](/models/IRM.py)
 - **MixStyle** - Domain generalization with mixstyle. [Published in ICLR 2021](https://arxiv.org/abs/2104.02008) | [View Code](/models/MixStyle.py)
+- **IBN** - Two at once: Enhancing learning and generalization capacities via IBN-Net. [Published in ECCV 2018](https://openaccess.thecvf.com/content_ECCV_2018/papers/Xingang_Pan_Two_at_Once_ECCV_2018_paper.pdf) | [View Code](/models/IBN.py)
 
 ## Getting Started
 ### Requirements
