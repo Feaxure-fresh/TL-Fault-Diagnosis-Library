@@ -2,10 +2,11 @@
 Paper: Tian, J., Han, D., Li, M. and Shi, P., 2022. A multi-source information transfer 
     learning method with subdomain adaptation for cross-domain fault diagnosis.
     Knowledge-Based Systems, 243, p.108466.
-Note: The code is reproduced according to the paper. If there is a performance loss compared to the paper,
-    please point out the mistakes or provide the source code. After testing, specific feature extractors and
-    LMMD proposed in the paper will cause performance drop when applied. If you want to try them, use the commented
-    codes.
+Note: The code has been developed in accordance with the methodologies described in the paper.
+    Should there be any discrepancies in performance relative to the published results, we welcome
+    feedback on potential errors or provision of source code. During our testing, we observed that
+    certain feature extractors and the LMMD technique outlined in the paper may lead to a decrease
+    in performance. Those elements can refer to the sections of the code that are commented out.
 Author: Feaxure
 '''
 import torch
