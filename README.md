@@ -1,7 +1,7 @@
 # Transfer Learning for Fault Diagnosis
 
 ## Overview
-Welcome to our repository dedicated to advancing the field of cross-domain fault diagnosis through transfer learning. Our focus lies in Single-source Unsupervised Domain Adaptation (SUDA) and Multi-source Unsupervised Domain Adaptation (MUDA), offering a rich collection of resources and methodologies.
+Welcome to our repository dedicated to advancing the field of cross-domain fault diagnosis through transfer learning. Our focus lies in Single-source Unsupervised Domain Adaptation (SUDA), Multi-source Unsupervised Domain Adaptation (MUDA) and Domain Generalization (DG), offering a rich collection of resources and methodologies.
 
 ## Featured Methods
 Our repository includes a diverse range of state-of-the-art methods, each accompanied by relevant publications and direct access to implementation code in `models`. Highlights include:
