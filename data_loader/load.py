@@ -49,7 +49,7 @@ def data_transforms(normlize_type="-1-1"):
 class dataset(object):
     
     def __init__(self, data_dir, dataset, faults, signal_size, normlizetype,
-                 balance_data=True, test_size=0.2):
+                 balance_data=False, test_size=0.2):
         self.num_classes = len(faults)
         self.balance_data = balance_data
         self.test_size = test_size
