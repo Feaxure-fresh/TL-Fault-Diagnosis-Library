@@ -164,6 +164,7 @@ python train.py --model_name MFSAN --load_path ./ckpt/MFSAN/multi_source/***.pth
 ```
 NOTE: The `--source` flag is not necessary for some models when loading weights for testing. However, for certain models, the number of sources is required to define the model structure, and the specific sources used are not important in this context.
 
+🛠️ For more experimental settings, please modify the arguments in `opt.py`.
 ## Contact
 We welcome feedback, inquiries, and suggestions to improve our work. If you encounter any issues with our code or have recommendations, please don't hesitate to reach out. You can contact Jinyuan Zhang via email at feaxure@outlook.com, or alternatively, feel free to post your queries or suggestions in the [Issues](https://github.com/Feaxure-fresh/TL-Bearing-Fault-Diagnosis/issues) section of our GitHub repository.
 
