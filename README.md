@@ -160,7 +160,7 @@ Load and utilize weights from previously trained models.
 
 Example: Load weights and test on CWRU operation condition 3.
 ```shell
-python train.py --model_name MFSAN --load_path ./ckpt/MFSAN/multi_source/***.pth --source CWRU_0,CWRU_1 --target CWRU_3 --cuda_device 0
+python train.py --model_name MFSAN --load_path ./ckpt/MFSAN/multi_source/**.pth --source CWRU_0,CWRU_1 --target CWRU_3 --cuda_device 0
 ```
 NOTE: The `--source` flag is not necessary for some models when loading weights for testing. However, for certain models, the number of sources is required to define the model structure, and the specific sources used are not important in this context.
 
