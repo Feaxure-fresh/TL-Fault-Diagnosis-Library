@@ -60,13 +60,14 @@ Our repository supports several public datasets for fault diagnosis, with accomp
 - **[IMS](https://www.kaggle.com/datasets/vinayak123tyagi/bearing-dataset?resource=download)** - Intelligent Maintenance Systems dataset.
 
 ### Setting Up Dataset Directory
-1. Create a folder named "datasets" in the root directory of the cloned repository.
-2. Download the desired datasets and place them into this "datasets" folder, follow the steps below:
+- Create a folder named "datasets" in the root directory of the cloned repository.
+- Download the desired datasets and place them into this "datasets" folder, follow the steps below:
 
 #### Within-dataset Transfer
 For analyzing a specific dataset under different working conditions:
 1. Divide the dataset into separate folders named "condition_0", "condition_1", etc., each representing a unique operational condition.
-2. Within each "condition_?" folder, create subfolders for different fault categories containing the respective fault data.
+2. Within each "condition_?" folder, create subfolders (with custom names) for different fault categories containing the respective fault data.
+3. Ensure each 'condition_?' folder contains subfolders with identical names and numbers (indicating the same classes of faults).
 
 For example, for the CWRU dataset:
    - Organize the dataset into folders based on motor speed (four speeds as four folders).
