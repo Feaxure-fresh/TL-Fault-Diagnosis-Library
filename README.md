@@ -90,7 +90,7 @@ Example folder structure for CWRU dataset:
         ...
 ```
 
-#### Cross-dataset transfer
+#### Cross-dataset Transfer
 For implementing transfer between different datasets:
 1. Ensure that the categories of faults contained in each dataset are consistent.
 2. Organize the datasets such that there is a direct correspondence between the fault categories across datasets.
