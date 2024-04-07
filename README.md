@@ -72,6 +72,7 @@ For analyzing a specific dataset under different working conditions:
 For example, for the CWRU dataset:
    - Organize the dataset into folders based on motor speed (four speeds as four folders).
    - Within each condition folder, categorize data into 9 subfolders for 9 fault classes, such as '7 mil Inner Race fault', '14 mil Inner Race fault', '7 mil Outer Race fault', etc., as detailed in Table XII of [this IEEE article](https://ieeexplore.ieee.org/abstract/document/9399341).
+
 Example folder structure for CWRU dataset:
 ```
 .
