@@ -46,9 +46,9 @@ You can access our repository either by direct download or using git clone. Here
 1. Open your command line interface.
 2. Navigate to the directory where you wish to clone the repository.
 3. Run the command:
-   ```shell
-   git clone https://github.com/Feaxure-fresh/TL-Bearing-Fault-Diagnosis.git
-   ```
+```shell
+git clone https://github.com/Feaxure-fresh/TL-Bearing-Fault-Diagnosis.git
+```
 
 ## Accessing Datasets
 ### Supported datasets
