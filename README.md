@@ -119,7 +119,7 @@ def your_dataset_name(item_path):
     signal = take_out_data_from_file(item_path)
     return signal
 ```
-This process allows for the seamless integration and utilization of diverse datasets within our fault diagnosis framework.
+This process allows for the seamless integration within our framework.
 
 NOTE: The names of folders in the source directory should be consistent with those in the target directory (meaning the classes of source and target are the same).
 
