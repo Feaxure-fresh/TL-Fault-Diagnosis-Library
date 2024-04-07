@@ -71,7 +71,7 @@ For analyzing a specific dataset under different working conditions:
 
 For example, for the CWRU dataset:
    - Organize the dataset into folders based on motor speed (four speeds as four folders).
-   - Within each speed folder, categorize data into 9 fault classes, such as '7 mil Inner Race fault', '14 mil Inner Race fault', '7 mil Outer Race fault', etc., as detailed in Table XII of [this IEEE article](https://ieeexplore.ieee.org/abstract/document/9399341).
+   - Within each condition folder, categorize data into 9 subfolders for 9 fault classes, such as '7 mil Inner Race fault', '14 mil Inner Race fault', '7 mil Outer Race fault', etc., as detailed in Table XII of [this IEEE article](https://ieeexplore.ieee.org/abstract/document/9399341).
 Example folder structure for CWRU dataset:
 ```
 .
@@ -121,8 +121,6 @@ def your_dataset_name(item_path):
     return signal
 ```
 This process allows for the seamless integration within our framework.
-
-NOTE: The names of folders in the source directory should be consistent with those in the target directory (meaning the classes of source and target are the same).
 
 ## Training Procedures
 ### Within-dataset transfer
