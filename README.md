@@ -113,7 +113,7 @@ For instance, when organizing CWRU and MFPT datasets for one-to-one transfer:
         ├── normal
         └── outer
 ```
-🌟 Still confused about the dataset setup? Please refer to the dataset organization examples provided in [this repository](https://github.com/Feaxure-fresh/Dataset-TL-BFD).
+🌟 Still confused about the dataset setup? Please refer to the sample datasets provided in [this repository](https://github.com/Feaxure-fresh/Dataset-TL-BFD).
 ### Custom Dataset Integration
 For incorporating other public datasets or your custom datasets, navigate to `data_loader/load_methods.py` in the repository. Implement your data loading function following this template:
 ```python
