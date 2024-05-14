@@ -101,7 +101,7 @@ class Trainset(InitTrain):
     def __init__(self, args):
         super(Trainset, self).__init__(args)
         self.mdd = ClassificationMarginDisparityDiscrepancy().to(self.device)
-        grl = utils.GradientReverseLayer()
+        grl = None
         self.model = GeneralModule(args, grl=grl).to(self.device)
         self._init_data()
     
