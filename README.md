@@ -55,7 +55,7 @@ git clone https://github.com/Feaxure-fresh/TL-Bearing-Fault-Diagnosis.git
 Our repository supports several public datasets for fault diagnosis, with accompanying loading code. These include:
 - **[CWRU](https://engineering.case.edu/bearingdatacenter)** - Case Western Reserve University dataset.
 - **[MFPT](https://www.mfpt.org/fault-data-sets)** - Machinery Failure Prevention Technology dataset.
-- **[PU](https://mb.uni-paderborn.de/kat/forschung/datacenter/bearing-datacenter)** - Paderborn University dataset.
+- **[PU](https://groups.uni-paderborn.de/kat/BearingDataCenter/)** - Paderborn University dataset.
 - **[XJTU](https://biaowang.tech/xjtu-sy-bearing-datasets)** - Xi’an Jiaotong University dataset.
 - **[IMS](https://www.kaggle.com/datasets/vinayak123tyagi/bearing-dataset?resource=download)** - Intelligent Maintenance Systems dataset.
 
