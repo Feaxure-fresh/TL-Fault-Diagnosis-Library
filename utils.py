@@ -5,11 +5,26 @@ from torch.autograd import Function
 import torch.nn.functional as F
 
 
-def get_accuracy(preds, targets):
-        assert preds.shape[0] == targets.shape[0]
-        correct = torch.eq(preds.argmax(dim=1), targets).float().sum().item()
-        accuracy = correct/preds.shape[0]
-        return accuracy
+def entropy(predictions, reduction='none'):
+    epsilon = 1e-5
+    H = -predictions * torch.log(predictions + epsilon)
+    H = H.sum(dim=1)
+    if reduction == 'mean':
+        return H.mean()
+    else:
+        return H
+        
+
+def get_info_from_name(name):
+    dataset = name
+    condition = None
+    selected_list = []
+    if '-' in name:
+        dataset, selected = name.split('-')[0], name.split('-')[1]
+        selected_list = list(map(int, list(selected)))
+    if '_' in dataset:
+        dataset, condition = dataset.split('_')[0], int(dataset.split('_')[1])
+    return dataset, condition, selected_list
 
 
 def binary_accuracy(output, target):
@@ -17,67 +32,8 @@ def binary_accuracy(output, target):
         batch_size = target.size(0)
         pred = (output >= 0.5).float().t().view(-1)
         correct = pred.eq(target.view(-1)).float().sum()
-        correct.mul_(100. / batch_size)
+        correct.mul_(1. / batch_size)
         return correct
-
-
-def gmean(iterable):
-    a = np.array(iterable)
-    return a.prod() ** (1. / len(a))
-
-
-def freeze_net(net):
-    if not net:
-        return
-    for p in net.parameters():
-        p.requires_grad = False
-
-
-def unfreeze_net(net):
-    if not net:
-        return
-    for p in net.parameters():
-        p.requires_grad = True
-
-
-def get_next_batch(loaders, iters, src, device, return_idx=False):
-    inputs, labels = None, None
-    if type(src) == list:
-        for key in src:
-            try:
-                inputs, labels, src_idx = next(iters[key])
-                break
-            except StopIteration:
-                continue
-        if inputs == None:
-            for key in src:
-                iters[key] = iter(loaders[key])
-            inputs, labels, src_idx = next(iters[src[0]])
-    else:
-        try:
-            inputs, labels, src_idx = next(iters[src])
-        except StopIteration:
-            iters[src] = iter(loaders[src])
-            inputs, labels, src_idx = next(iters[src])
-    
-    if return_idx:
-        return inputs.to(device), labels.to(device), src_idx.to(device)
-    else:
-        return inputs.to(device), labels.to(device)
-
-
-def get_concat_dataset_next_batch(loaders, iters, src, device, return_idx=False):
-    inputs, labels = None, None
-    try:
-        inputs, labels, src_idx = next(iters[src])
-    except StopIteration:
-        iters[src] = iter(loaders[src])
-        inputs, labels, src_idx = next(iters[src])
-    
-    if return_idx:
-        return inputs.to(device), labels.to(device), src_idx.to(device)
-    else:
-        return inputs.to(device), labels.to(device)
 
 
 class GradientReverseFunction(Function):
@@ -133,7 +89,7 @@ def _update_index_matrix(batch_size, index_matrix = None, linear = True):
         index_matrix = torch.zeros(2 * batch_size, 2 * batch_size)
         if linear:
             '''
-            # Seems that this part is wrong.
+            # It seems that this part is wrong.
             for i in range(batch_size):
                 s1, s2 = i, (i + 1) % batch_size
                 t1, t2 = s1 + batch_size, s2 + batch_size
