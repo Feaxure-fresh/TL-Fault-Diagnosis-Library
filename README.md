@@ -144,35 +144,37 @@ def your_dataset_name(item_path):
 This process allows for the seamless integration within our framework.
 
 ## Training Procedures
-### Within-dataset transfer
+### Within-dataset Transfer
 Train models using data from the same dataset but different operational conditions.
 
-#### One-to-One Transfer
+##### One-to-One Transfer
 Example: Transfer from CWRU operation condition 0 to condition 1.
 ```shell
 python train.py --model_name DAN --source CWRU_0 --target CWRU_1 --train_mode single_source --cuda_device 0
 ```
 
-#### Many-to-One Transfer
+##### Many-to-One Transfer
 Example: Transfer from CWRU operation condition 0 and condition 1 to condition 2.
 ```shell
 python train.py --model_name MFSAN --source CWRU_0,CWRU_1 --target CWRU_2 --train_mode multi_source --cuda_device 0 
 ```
 
-### Cross-dataset transfer
+### Cross-dataset Transfer
 Train models using data from different datasets.
 
-#### One-to-One Transfer
+##### One-to-One Transfer
 Example: Transfer from CWRU to MFPT dataset.
 ```shell
 python train.py --model_name DAN --source CWRU --target MFPT --train_mode single_source --cuda_device 0
 ```
 
-#### Many-to-One Transfer
+##### Many-to-One Transfer
 Example: Transfer from CWRU and PU datasets to MFPT dataset.
 ```shell
 python train.py --model_name MFSAN --source CWRU,PU --target MFPT --train_mode multi_source --cuda_device 0
 ```
+
+### Within-dataset transfer
 
 ### Load trained weights
 Load and utilize weights from previously trained models.
