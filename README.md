@@ -1,7 +1,7 @@
 # Transfer Learning Library for Fault Diagnosis
 
 ## Overview
-Welcome to our repository dedicated to advancing cross-domain fault diagnosis through transfer learning. Our focus lies in single-source unsupervised domain adaptation, multi-source unsupervised domain adaptation and domain gneralization. Our library offers a rich suite of resources and methods, supporting closed-set, open-set, partial, and universal domain adaptation scenarios.
+Welcome to our repository dedicated to advancing cross-domain fault diagnosis through transfer learning. Our focus lies in **single-source unsupervised domain adaptation**, **multi-source unsupervised domain adaptation** and **domain gneralization**. Our library offers a rich suite of resources and methods, supporting **closed-set**, **open-set**, **partial**, and **universal** domain adaptation scenarios.
 
 ## Updates
 ### 2024.07.25
@@ -9,7 +9,7 @@ We are excited to release version 2.0.0 of the TL-Fault-Diagnosis-Library. Key u
 - The library now supports not only closed-set but also open-set, partial, and universal domain adaptation scenarios. All models are reorganized for training across these scenarios. When models originally designed for closed-set are used in open-set or universal scenarios, the Closed-set-acc (which excludes categories present in the target domain but absent in the source domain) will also be reported.
 - The library now includes popular methods such as IWAN and AFN for partial domain adaptation, and UDA for universal domain adaptation.
 - ResNet is now available as a backbone architecture option, specifically a 1D ResNet adapted from [this repository](https://github.com/Xiaohan-Chen/transfer-learning-fault-diagnosis-pytorch).
-- Releases have been created for this repository, with dataset examples integrated within the Releases section instead of the Dataset-TL-BFD repo. The original version of our code (v1.0.0) remains accessible for reference.
+- Releases have been created for this repository, with dataset examples integrated within the Releases section instead of the [Dataset-TL-BFD repo](https://github.com/Feaxure-fresh/Dataset-TL-BFD). The original version of our code (v1.0.0) remains accessible for reference.
 
 Please note: Due to extensive updates in version 2.0.0, models from this version cannot be used to train in the original version of the code.
 
