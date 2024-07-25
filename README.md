@@ -13,9 +13,7 @@ We are excited to release version 2.0.0 of the TL-Fault-Diagnosis-Library. Key u
 
 Please note: Due to extensive updates in version 2.0.0, models from this version cannot be used to train in the original version of the code.
 
-## Featured Methods
-Our repository includes a diverse range of leading methods, each accompanied by relevant publications and direct access to implementation code in `models`. Highlights include:
-
+## Featured Models
 ### Domain Adaptation
 - **ACDANN** - Integrating expert knowledge with domain adaptation for unsupervised fault diagnosis. [Published in TIM 2021](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9612159) | [View Code](/models/ACDANN.py)
 - **ADACL** - Adversarial domain adaptation with classifier alignment for cross-domain intelligent fault diagnosis of multiple source domains. [Published in Measurement Science and Technology 2020](https://iopscience.iop.org/article/10.1088/1361-6501/abcad4/pdf) | [View Code](/models/ADACL.py)
@@ -39,7 +37,7 @@ Our repository includes a diverse range of leading methods, each accompanied by 
 
 ### Partial Domain Adaptation
 - **IWAN** - Importance weighted adversarial nets for partial domain adaptation. [Published in CVPR 2018](https://openaccess.thecvf.com/content_cvpr_2018/papers/Zhang_Importance_Weighted_Adversarial_CVPR_2018_paper.pdf) | [View Code](/models/IWAN.py)
-- **AFN** - Larger norm more transferable: An adaptive feature norm approach for unsupervised domain adaptation [Published in ICCV 2019](https://openaccess.thecvf.com/content_ICCV_2019/papers/Xu_Larger_Norm_More_Transferable_An_Adaptive_Feature_Norm_Approach_for_ICCV_2019_paper.pdf) | [View Code](/models/AFN.py)
+- **AFN** - Larger norm more transferable: An adaptive feature norm approach for unsupervised domain adaptation. [Published in ICCV 2019](https://openaccess.thecvf.com/content_ICCV_2019/papers/Xu_Larger_Norm_More_Transferable_An_Adaptive_Feature_Norm_Approach_for_ICCV_2019_paper.pdf) | [View Code](/models/AFN.py)
 
 ### Universal Domain Adaptation
 - **UDA** - Universal domain adaptation. [Published in CVPR 2019](https://openaccess.thecvf.com/content_CVPR_2019/papers/You_Universal_Domain_Adaptation_CVPR_2019_paper.pdf) | [View Code](/models/UDA.py)
@@ -55,10 +53,13 @@ Our code runs fine with the following prerequisites:
 *  Scipy (>=1.10)
 
 ### Repository Access
-You can access our repository either by direct download or using git clone. Here’s how:
 #### Direct Download
 1. Click on the 'Code' button and select 'Download ZIP'.
 2. Extract the ZIP file to your desired location.
+#### Download Latest Release
+1. Navigate to the 'Releases' section of the GitHub repository.
+2. Click on the latest release named `TL-Fault-Diagnosis-Library.v*.*.*.zip`.
+3. Extract the ZIP file to your desired location.
 #### Using Git Clone
 1. Open your command line interface.
 2. Navigate to the directory where you wish to clone the repository.
@@ -75,6 +76,7 @@ Our repository supports several public datasets for fault diagnosis, with accomp
 - **[PU](https://groups.uni-paderborn.de/kat/BearingDataCenter/)** - Paderborn University dataset.
 - **[XJTU](https://biaowang.tech/xjtu-sy-bearing-datasets)** - Xi’an Jiaotong University dataset.
 - **[IMS](https://www.kaggle.com/datasets/vinayak123tyagi/bearing-dataset?resource=download)** - Intelligent Maintenance Systems dataset.
+- **[JNU](https://github.com/ClarkGableWang/JNU-Bearing-Dataset)** - Jiangnan University dataset.
 
 ### Setting Up Dataset Directory
 - Create a folder named "datasets" in the root directory of the cloned repository.
