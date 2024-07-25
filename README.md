@@ -190,14 +190,13 @@ We welcome feedback, inquiries, and suggestions to improve our work. If you enco
 ## Citation
 Your support in citing our project when used in your research is highly appreciated. It helps in the recognition and dissemination of our work. Please use the following citation format:
 ```latex
-@misc{TL-Bearing-Fault-Diagnosis,
+@misc{TL-Fault-Diagnosis-Library,
     author = {Jinyuan Zhang},
-    title = {TL-Bearing-Fault-Diagnosis},
+    title = {TL-Fault-Diagnosis-Library},
     year = {2022},
     publisher = {GitHub},
     journal = {GitHub repository},
-    howpublished = {\url{https://github.com/Feaxure-fresh/TL-Bearing-Fault-Diagnosis}}
+    howpublished = {\url{https://github.com/Feaxure-fresh/TL-Fault-Diagnosis-Library}}
 }
-
 ```
 
