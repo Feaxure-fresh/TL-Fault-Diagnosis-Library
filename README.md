@@ -174,7 +174,20 @@ Example: Transfer from CWRU and PU datasets to MFPT dataset.
 python train.py --model_name MFSAN --source CWRU,PU --target MFPT --train_mode multi_source --cuda_device 0
 ```
 
-### Within-dataset transfer
+### Selective Transfer
+Select specific fault categories within the dataset to create a sub-dataset for transfer. Use the format "dataset-numbers" to select fault categories, where 'numbers' refers to specific faults.
+
+For example, consider the sample datasets in the 'Releases' named `Dataset-TL-FD-Library.zip`: Transfer from CWRU (inner, normal, and outer faults) to MFPT (inner and normal faults) dataset.
+```shell
+python train.py --model_name DAN --source CWRU --target MFPT-01 --train_mode single_source --cuda_device 0
+```
+In this partial domain adaptation scenario, only the fault types 'inner' and 'normal' are selected from the MFPT dataset for transfer. Thus, `--target` is set as `MFPT-01`, where '0' and '1' denote the first and second fault types (as sorted in filenames) in the MFPT dataset, respectively. This functionality is especially useful for creating category gaps in various transfer scenarios without the need to reorganize dataset files.
+
+With the following command:
+```shell
+python train.py --model_name UDA --source CWRU_0-01,CWRU_1-01 --target CWRU_1-12 --train_mode source_combine --cuda_device 0
+```
+It creates a universal domain adaptation scenario, transferring 'ball_07' and 'ball_14' from conditions 0 and 1 to 'ball_14' and 'ball_21' in condition 1.
 
 ### Load trained weights
 Load and utilize weights from previously trained models.
