@@ -10,6 +10,7 @@ We are excited to release version 2.0.0 of the TL-Fault-Diagnosis-Library. Key u
 - The library now includes popular methods such as IWAN and AFN for partial domain adaptation, and UDA for universal domain adaptation.
 - ResNet is now available as a backbone architecture option, specifically a 1D ResNet adapted from [this repository](https://github.com/Xiaohan-Chen/transfer-learning-fault-diagnosis-pytorch).
 - Releases have been created for this repository, with dataset examples integrated within the Releases section instead of the Dataset-TL-BFD repo. The original version of our code (v1.0.0) remains accessible for reference.
+
 Please note: Due to extensive updates in version 2.0.0, models from this version cannot be used to train in the original version of the code.
 
 ## Featured Methods
