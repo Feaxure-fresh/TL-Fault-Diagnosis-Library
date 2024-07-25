@@ -1,7 +1,7 @@
 import argparse
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='From github.com/Feaxure-fresh/TL-Fault-Diagnosis-Library')
+    parser = argparse.ArgumentParser(description='From https://github.com/Feaxure-fresh/TL-Fault-Diagnosis-Library')
  
     # basic parameters
     parser.add_argument('--model_name', type=str, default='CNN',
