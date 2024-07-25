@@ -132,7 +132,7 @@ For instance, when organizing CWRU and MFPT datasets for one-to-one transfer:
         ├── normal
         └── outer
 ```
-🌟 Still confused about the dataset setup? Please refer to the sample datasets provided in the 'Releases' named `Dataset-TL-FD-Library.zip`.
+🌟 Still confused about the dataset setup? Please refer to the sample datasets in the 'Releases' named `Dataset-TL-FD-Library.zip`.
 ### Custom Dataset Integration
 For incorporating other public datasets or your custom datasets, navigate to `data_loader/load_methods.py` in the repository. Implement your data loading function following this template:
 ```python
