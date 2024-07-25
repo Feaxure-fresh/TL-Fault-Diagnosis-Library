@@ -59,12 +59,3 @@ def JNU(item_path):
     signal = fl.values
     
     return signal
-
-
-def FB(item_path):
-    with open(item_path, 'r') as f:
-        fl = f.readlines()[10].split()
-    fl = [float(x) for x in fl]
-    signal = np.array(fl).reshape(-1, 1)
-    
-    return signal
