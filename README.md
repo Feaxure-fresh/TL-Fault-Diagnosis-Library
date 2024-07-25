@@ -14,7 +14,7 @@ We are excited to release version 2.0.0 of the TL-Fault-Diagnosis-Library. Key u
 Please note: Due to extensive updates in version 2.0.0, models from this version cannot be used to train in the original version of the code.
 
 ## Featured Methods
-Our repository includes a diverse range of state-of-the-art methods, each accompanied by relevant publications and direct access to implementation code in `models`. Highlights include:
+Our repository includes a diverse range of leading methods, each accompanied by relevant publications and direct access to implementation code in `models`. Highlights include:
 
 ### Domain Adaptation
 - **ACDANN** - Integrating expert knowledge with domain adaptation for unsupervised fault diagnosis. [Published in TIM 2021](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9612159) | [View Code](/models/ACDANN.py)
@@ -36,6 +36,13 @@ Our repository includes a diverse range of state-of-the-art methods, each accomp
 - **MLDG** - Learning to generalize: Meta-learning for domain generalization. [Published in AAAI 2018](https://ojs.aaai.org/index.php/AAAI/article/view/11596) | [View Code](/models/MLDG.py)
 - **GroupDRO** - Distributionally robust neural networks for group shifts: On the importance of regularization for worst-case generalization. [Published in ICLR 2020](https://arxiv.org/pdf/1911.08731.pdf) | [View Code](/models/DRO.py)
 - **VREx** - Out-of-distribution generalization via risk extrapolation. [Published in ICML 2021](https://proceedings.mlr.press/v139/krueger21a/krueger21a.pdf) | [View Code](/models/VREx.py)
+
+### Partial Domain Adaptation
+- **IWAN** - Importance weighted adversarial nets for partial domain adaptation. [Published in CVPR 2018](https://openaccess.thecvf.com/content_cvpr_2018/papers/Zhang_Importance_Weighted_Adversarial_CVPR_2018_paper.pdf) | [View Code](/models/IWAN.py)
+- **AFN** - Larger norm more transferable: An adaptive feature norm approach for unsupervised domain adaptation [Published in ICCV 2019](https://openaccess.thecvf.com/content_ICCV_2019/papers/Xu_Larger_Norm_More_Transferable_An_Adaptive_Feature_Norm_Approach_for_ICCV_2019_paper.pdf) | [View Code](/models/AFN.py)
+
+### Universal Domain Adaptation
+- **UDA** - Universal domain adaptation. [Published in CVPR 2019](https://openaccess.thecvf.com/content_CVPR_2019/papers/You_Universal_Domain_Adaptation_CVPR_2019_paper.pdf)| [View Code](/models/UDA.py)
 
 ## Getting Started
 ### Requirements
