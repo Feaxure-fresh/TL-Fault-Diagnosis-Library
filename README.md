@@ -42,7 +42,7 @@ Our repository includes a diverse range of leading methods, each accompanied by 
 - **AFN** - Larger norm more transferable: An adaptive feature norm approach for unsupervised domain adaptation [Published in ICCV 2019](https://openaccess.thecvf.com/content_ICCV_2019/papers/Xu_Larger_Norm_More_Transferable_An_Adaptive_Feature_Norm_Approach_for_ICCV_2019_paper.pdf) | [View Code](/models/AFN.py)
 
 ### Universal Domain Adaptation
-- **UDA** - Universal domain adaptation. [Published in CVPR 2019](https://openaccess.thecvf.com/content_CVPR_2019/papers/You_Universal_Domain_Adaptation_CVPR_2019_paper.pdf)| [View Code](/models/UDA.py)
+- **UDA** - Universal domain adaptation. [Published in CVPR 2019](https://openaccess.thecvf.com/content_CVPR_2019/papers/You_Universal_Domain_Adaptation_CVPR_2019_paper.pdf) | [View Code](/models/UDA.py)
 
 ## Getting Started
 ### Requirements
