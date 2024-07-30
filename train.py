@@ -32,7 +32,7 @@ def creat_file(args):
     for src in args.source_name:
         source += src
     
-    file_name = '[' + '|'.join(args.source_name) + ']' + 'To' + '[' +\
+    file_name = '[' + ''.join(args.source_name) + ']' + 'To' + '[' +\
             args.target + ']' + '_' + datetime.strftime(datetime.now(), '%m%d-%H%M%S')
     save_dir = os.path.join(args.save_dir, args.model_name, args.train_mode)
     if not os.path.exists(save_dir):
